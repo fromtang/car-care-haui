@@ -9,7 +9,7 @@ public class Login {
 
     public Login() {
         tenDangNhap = "admin";
-        matKhau = "123456";
+        matKhau = "admin";
     }
 
     public Login(String tenDangNhap, String matKhau) {

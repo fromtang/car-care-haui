@@ -1,13 +1,15 @@
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import model.Login;
 
-public class LoginFrm extends javax.swing.JFrame {
+public class LoginForm extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginFrm
      */
-    public LoginFrm() {
+    public LoginForm() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -36,7 +38,7 @@ public class LoginFrm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Log In");
+        setTitle("Đăng Nhập Form");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel1.setText("Tên đăng nhập:");
@@ -45,6 +47,11 @@ public class LoginFrm extends javax.swing.JFrame {
         jLabel2.setText("Mật khẩu:");
 
         txtDangNhap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        txtDangNhap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDangNhapActionPerformed(evt);
+            }
+        });
 
         btnDangNhap.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         btnDangNhap.setText("Đăng nhập");
@@ -69,6 +76,7 @@ public class LoginFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(255, 51, 255));
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("ĐĂNG NHẬP");
@@ -120,6 +128,15 @@ public class LoginFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        String username = txtDangNhap.getText();
+        char[] password = txtMatKhau.getPassword();
+        Login account = new Login(username,new String(password));
+        if((new Login()).equals(account)){
+            new HomeForm().setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Tài khoản hoặc mật khẩu không chính xác");
+        }
         
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
@@ -130,6 +147,10 @@ public class LoginFrm extends javax.swing.JFrame {
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnHuyBoActionPerformed
+
+    private void txtDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDangNhapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDangNhapActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,7 +183,7 @@ public class LoginFrm extends javax.swing.JFrame {
         /* Create and display the form */
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            new LoginFrm().setVisible(true);
+            new LoginForm().setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
