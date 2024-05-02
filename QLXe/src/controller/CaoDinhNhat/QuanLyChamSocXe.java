@@ -8,6 +8,62 @@ package controller.CaoDinhNhat;
  *
  * @author Admin
  */
-public class QuanLyChamSocXe {
-    
+public class QuanLyChamSocXe extends Xe implements Serializable{
+    private Vatpham vatpham;
+    private LocalDate ngaysua;
+    private String maChamSoc;
+
+    public QuanLyChamSocXe() {
+    }
+
+    public QuanLyChamSocXe(Vatpham vatpham,LocalDate ngaysua, String maChamSoc,String bienSoXe,String loaiXe,Nguoi ChuSoHuu, ) {
+
+        this.vatpham = vatpham;
+        this.ngaysua = ngaysua;
+        this.maChamSoc = maChamSoc;
+        super(bienSoXe,loaiXe , ChuSoHuu);
+        try{
+            setMaChamSoc(maChamSoc);
+        }
+        catch (Exception e)
+        {
+            System.out.println("co loi du lieu khong hop le!" + e.toString());
+        }
+    }
+
+    public Vatpham getVatpham() {
+        return vatpham;
+    }
+
+    public LocalDate getNgaysua() {
+        return ngaysua;
+    }
+
+    public String getMaChamSoc() {
+        return maChamSoc;
+    }
+
+    public void setVatpham(Vatpham vatpham) {
+        this.vatpham = vatpham;
+    }
+
+    public void setNgaysua(LocalDate ngaysua) {
+        this.ngaysua = ngaysua;
+    }
+
+    public void setMaChamSoc(String maChamSoc) {
+        if(maChamSoc.trim().equals("")){
+            throw new Exception("ma cham soc khong duoc de trong")
+        }
+        this.maChamSoc = maChamSoc;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "QuanLyChamSocXe{" +
+                "vatpham=" + vatpham +
+                ", ngaysua=" + ngaysua +
+                ", maChamSoc='" + maChamSoc + '\'' +
+                '}';
+    }
 }
