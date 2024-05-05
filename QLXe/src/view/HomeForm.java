@@ -1,6 +1,10 @@
 package view;
 
 
+import controller.CaoDinhNhat.ControllerQuanLyChamSocXe;
+import controller.NguyenDinhTang.QuanLyDangKyBangLai;
+import controller.NguyenTrungQuan.QuanLyBaoHiem;
+import controller.TrinhDucThang.ControllerQuanLyHoaDon;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -8,11 +12,40 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import model.CaoDinhNhat.QuanLyChamSocXe;
+import model.NguyenDinhTang.QuanLyDangKyBangLaiXe;
+import model.NguyenTrungQuan.BaoHiemXeMay;
+import model.TrinhDucThang.QuanLyHoaDon;
+import view.QuanLyChamSocXe.Sua;
+import view.QuanLyChamSocXe.ThemMoi;
 
 
-public class HomeForm extends javax.swing.JFrame {
+public class HomeForm extends javax.swing.JFrame implements View{
 
     private int dongChon = -1;
+    
+    //    DATA FOR QUANLYBANGLAIXE
+    private ArrayList<QuanLyDangKyBangLaiXe> dsDky;
+    QuanLyDangKyBangLai file;
+    private ArrayList<QuanLyDangKyBangLaiXe> dsDkyBanDau;
+    private DefaultTableModel tblModelBLX;
+
+//    DATA FOR QUANLYCHAMSOCXE
+    private ArrayList<QuanLyChamSocXe> dsQly;
+    private DefaultTableModel tblModelQLX;
+    private ControllerQuanLyChamSocXe controllerQLX;
+
+//  DATA FOR QUANLYHOADON
+    private TreeSet<QuanLyHoaDon> dsHD; // danh sách để lưu trữ hóa đơn
+    private DefaultTableModel modelHD; // sử dụng lớp triển khai sẵn có của giao diện TableModel
+    private ControllerQuanLyHoaDon controller; // sử dụng lớp ControllerHD để điều khiển chức năng
+    private ArrayList<QuanLyHoaDon> ds2; // danh sách để lưu trữ những thay đổi của danh sách hóa đơn
+
+//    DATA FOR QUANLYBAOHIEM
+    private TreeSet<BaoHiemXeMay> listBH;
+    private ArrayList<BaoHiemXeMay> listBH2;
+    private DefaultTableModel modelBH;
+    private QuanLyBaoHiem controllerBH;
 
 
     public HomeForm() {
@@ -20,6 +53,11 @@ public class HomeForm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        // SHOW QUANLYCHAMSOCXE
+         dsQly = new ArrayList<>(); // khoi tao danh sach luu ds cham soc xe
+        tblModelQLX = (DefaultTableModel) tblDanhSachXe.getModel(); 
+        controllerQLX = new ControllerQuanLyChamSocXe();
+        showQuanLyChamSocXe();
     }
 
     @SuppressWarnings("unchecked")
@@ -104,7 +142,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnThemMoi.setText("Thêm mới");
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemMoiActionPerformed(evt);
+                btnThemQLChamSocXe(evt);
             }
         });
 
@@ -112,7 +150,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnSua.setText("Sửa thông tin");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
+                btnSuaQLChamSocXe(evt);
             }
         });
 
@@ -120,7 +158,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
+                btnXoaQLChamSocXe(evt);
             }
         });
 
@@ -132,7 +170,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnQuayLai.setText("Quay lại");
         btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuayLaiActionPerformed(evt);
+                btnQuayLaiQLChamSocXe(evt);
             }
         });
 
@@ -143,7 +181,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemActionPerformed(evt);
+                btnTimKiemQLChamSocXe(evt);
             }
         });
 
@@ -779,28 +817,84 @@ public class HomeForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblQLHDMouseClicked
 
-    private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
+    private void btnThemQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemQLChamSocXe
+        ThemMoi themMoi = new ThemMoi(this, rootPaneCheckingEnabled);
+        themMoi.setVisible(true);
+    }//GEN-LAST:event_btnThemQLChamSocXe
 
-    }//GEN-LAST:event_btnThemMoiActionPerformed
+    private void btnSuaQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaQLChamSocXe
+         dongChon = tblDanhSachXe.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (dsQly.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            Sua sua = new Sua(this, rootPaneCheckingEnabled);
+            sua.setEditData(dsQly.get(dongChon));
+            sua.setVisible(true);
+        }
+    }//GEN-LAST:event_btnSuaQLChamSocXe
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+    private void btnXoaQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaQLChamSocXe
+        dongChon = tblDanhSachXe.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (dsQly.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và 
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsQly.remove(dongChon);
+                controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+                this.showData(dsQly, tblModelQLX);
+            }
+        }
+    }//GEN-LAST:event_btnXoaQLChamSocXe
 
-    }//GEN-LAST:event_btnSuaActionPerformed
+    private void btnQuayLaiQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiQLChamSocXe
+        //        Show lại danh sách ban đầu đọc từ file ra
+        txtTimKiemBSX.setText("");
+        showQuanLyChamSocXe();
+    }//GEN-LAST:event_btnQuayLaiQLChamSocXe
 
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
-
-    }//GEN-LAST:event_btnQuayLaiActionPerformed
-
-    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-
-    }//GEN-LAST:event_btnTimKiemActionPerformed
+    private void btnTimKiemQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemQLChamSocXe
+        //        Lấy ra biển số xe người dùng nhập vào để tìm 
+        String bsx = txtTimKiemBSX.getText().trim();
+//        Nếu biển số xe rỗng tức là chưa nhập biển số sẽ show ra thông báo
+        if (bsx.length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập biển số!");
+        } else {
+            ArrayList<QuanLyChamSocXe> list = controllerQLX.timKiemQLX(dsQly, bsx); // list chứa thông tin cần tìm
+//            Nếu list chứa thông tin tìm được mà rỗng show ra thông báo còn không thì show thông tin trong list ra
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy xe!");
+            } else {
+                this.showData(list, tblModelQLX);
+            }
+        }
+    }//GEN-LAST:event_btnTimKiemQLChamSocXe
 
     private void comboSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSapXepActionPerformed
-
+        //        Lấy ra chỉ số của JcomboBox
+        int index = comboSapXep.getSelectedIndex();
+//        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa 
+        if (index == 0) {
+            controllerQLX.sortByThanhTien(dsQly);
+        } else if (index == 1) {
+            controllerQLX.sortByNgaySua(dsQly);
+        }
+        this.showData(dsQly, tblModelQLX);
     }//GEN-LAST:event_comboSapXepActionPerformed
 
     private void txtTimKiemBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemBHActionPerformed
@@ -989,5 +1083,79 @@ public class HomeForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiemBSX;
     // End of variables declaration//GEN-END:variables
 
+     @Override
+    public <T> void showData(ArrayList<T> list, DefaultTableModel model) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        model.setRowCount(0);
+        for (T t : list) {
+            if (t instanceof QuanLyDangKyBangLaiXe) {
+                QuanLyDangKyBangLaiXe blx = (QuanLyDangKyBangLaiXe) t;
+                tblModelBLX.addRow(new Object[]{
+                    blx.getHoTen(), blx.getSdt(), blx.getDiaChi(), blx.getNgayDky(), blx.getLoaiBang()
+                });
+
+            }
+            if (t instanceof QuanLyChamSocXe) {
+                QuanLyChamSocXe xe = (QuanLyChamSocXe) t;
+                model.addRow(new Object[]{
+                    xe.getMaChamSoc(), xe.getBienSoXe(), xe.getLoaiXe(), xe.getChuSoHuu().getHoTen(),
+                    xe.getChuSoHuu().getSdt(), xe.getVatPham().getTenVatPham(),
+                    xe.getNgaySua().format(dateFormatter),
+                    xe.getVatPham().getSoLuong(), xe.getVatPham().getDonGia(), xe.thanhTien()
+                });
+            }
+            if (t instanceof BaoHiemXeMay) {
+                BaoHiemXeMay bh = (BaoHiemXeMay) t;
+                model.addRow(new Object[]{
+                    bh.getMaBH(), bh.getCar().getChuSoHuu().getHoTen(), bh.getCar().getBienSoXe(),
+                    bh.getCar().getLoaiXe(), bh.getTimeStart().format(dateFormatter),
+                    bh.getTimeEnd().format(dateFormatter), bh.getCost()
+
+                });
+            }
+            if (t instanceof QuanLyHoaDon hd) {
+                model.addRow(new Object[]{
+                    hd.getMaHD(), hd.getKhachHang().getHoTen(),
+                    hd.getKhachHang().getDiaChi(), hd.getKhachHang().getSdt(),
+                    hd.getThoiGian().format(dateFormatter), hd.tongTien()
+                });
+            }
+        }
+    }
    
+// QUAN LY CHAM SOC XE
+    //    Phương thức này dùng để thêm thông tin chăm sóc xe mới vào danh sách
+    public void addXe(QuanLyChamSocXe x) {
+        dsQly.add(x);
+        this.showData(dsQly, tblModelQLX);
+        controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+    }
+
+//    Phương thức này dùng để cập nhật thông tin chăm sóc xe
+    public void updateXe(QuanLyChamSocXe x) {
+        int oldIndex = dongChon;
+        dsQly.remove(oldIndex);
+        dsQly.add(oldIndex, x);
+        showData(dsQly, tblModelQLX);
+        controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+    }
+
+//    Phương thức này để kiểm tra mã ID trùng 
+    public boolean checkIdTrung(String maChamSoc) {
+        for (QuanLyChamSocXe xe : dsQly) {
+            if (xe.getMaChamSoc().equalsIgnoreCase(maChamSoc)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+//    Phương thức này dùng để đọc file và show dữ liệu từ file ra khi chạy lại chương trình
+    private void showQuanLyChamSocXe() {
+        dsQly = (ArrayList<QuanLyChamSocXe>) controllerQLX.readDataFromFile("ChamSocXe.txt");
+        if (dsQly == null) {
+            dsQly = new ArrayList<>();
+        }
+        this.showData(dsQly, tblModelQLX);
+    }
 }
