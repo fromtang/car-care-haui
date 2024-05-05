@@ -18,6 +18,8 @@ import model.NguyenTrungQuan.BaoHiemXeMay;
 import model.TrinhDucThang.QuanLyHoaDon;
 import view.QuanLyChamSocXe.Sua;
 import view.QuanLyChamSocXe.ThemMoi;
+import view.QuanLyDangKyBangLai.SuaBLX;
+import view.QuanLyDangKyBangLai.ThemBLX;
 
 
 public class HomeForm extends javax.swing.JFrame implements View{
@@ -26,7 +28,7 @@ public class HomeForm extends javax.swing.JFrame implements View{
     
     //    DATA FOR QUANLYBANGLAIXE
     private ArrayList<QuanLyDangKyBangLaiXe> dsDky;
-    QuanLyDangKyBangLai file;
+    private QuanLyDangKyBangLai file;
     private ArrayList<QuanLyDangKyBangLaiXe> dsDkyBanDau;
     private DefaultTableModel tblModelBLX;
 
@@ -58,6 +60,16 @@ public class HomeForm extends javax.swing.JFrame implements View{
         tblModelQLX = (DefaultTableModel) tblDanhSachXe.getModel(); 
         controllerQLX = new ControllerQuanLyChamSocXe();
         showQuanLyChamSocXe();
+        
+        // SHOW QLBangLai
+         if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        file = new QuanLyDangKyBangLai();
+        dsDky = (ArrayList<QuanLyDangKyBangLaiXe>) file.readDataFromFile("blx.txt");
+        tblModelBLX = (DefaultTableModel) tblDSBLX.getModel();
+        sortByName.setSelected(true);
+        showQuanLyBLX();
     }
 
     @SuppressWarnings("unchecked")
@@ -286,7 +298,7 @@ public class HomeForm extends javax.swing.JFrame implements View{
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemBL(evt);
             }
         });
 
@@ -294,7 +306,7 @@ public class HomeForm extends javax.swing.JFrame implements View{
         jButton2.setText("Sửa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaBL(evt);
             }
         });
 
@@ -305,7 +317,7 @@ public class HomeForm extends javax.swing.JFrame implements View{
         jButton3.setText("Xóa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnXoaBL(evt);
             }
         });
 
@@ -320,7 +332,7 @@ public class HomeForm extends javax.swing.JFrame implements View{
         jButton4.setText("Hoàn tác");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnHoanTacBL(evt);
             }
         });
 
@@ -934,29 +946,72 @@ public class HomeForm extends javax.swing.JFrame implements View{
        
     }//GEN-LAST:event_btnTimKiemBHActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnThemBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemBL
+        ThemBLX them = new ThemBLX(this, rootPaneCheckingEnabled);
+        them.setVisible(true);
+    }//GEN-LAST:event_btnThemBL
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnSuaBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaBL
+      dongChon = tblDSBLX.getSelectedRow();
+        if (dsDky.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de sua!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon dong chua thong tin can sua!");
+        } else {
+            SuaBLX suaBlx = new SuaBLX(this, rootPaneCheckingEnabled);
+            suaBlx.setEditData(dsDky.get(dongChon));
+            suaBlx.setVisible(true);
+        }
+    }//GEN-LAST:event_btnSuaBL
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnXoaBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaBL
+        dongChon = tblDSBLX.getSelectedRow();
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon mot dong can xoa!");
+        } else if (dsDky.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de xoa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsDky.remove(dongChon);
+                this.showData(dsDky, tblModelBLX);
+            }
+        }
+    }//GEN-LAST:event_btnXoaBL
 
     private void txtHoTenTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenTimKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoTenTimKiemActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnHoanTacBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacBL
+        showQuanLyBLX();
+    }//GEN-LAST:event_btnHoanTacBL
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
        
-      
+      String hoTenTimKiem = txtHoTenTimKiem.getText();
+        if (hoTenTimKiem.length() > 0) {
+            ArrayList<QuanLyDangKyBangLaiXe> list = new ArrayList<>();
+            for (QuanLyDangKyBangLaiXe x : dsDky) {
+                if (x.getHoTen().equals(hoTenTimKiem)) {
+                    list.add(x);
+                }
+            }
+            dsDky.clear();
+            dsDky.addAll(list);
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Khong tim thay!");
+            } else {
+                this.showData(list, tblModelBLX);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Vui long nhap thong tin!");
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void sortByNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByNameActionPerformed
@@ -968,7 +1023,13 @@ public class HomeForm extends javax.swing.JFrame implements View{
     }//GEN-LAST:event_sortByDateActionPerformed
 
     private void SortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortActionPerformed
-      
+       QuanLyDangKyBangLai sort = new QuanLyDangKyBangLai();
+        if (sortByName.isSelected()) {
+            sort.sortByHoTen(dsDky);
+        } else {
+            sort.sortByNgayDky(dsDky);
+        }
+        this.showData(dsDky, tblModelBLX);
     }//GEN-LAST:event_SortActionPerformed
 
     private void txtTimKiemBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemBSXActionPerformed
@@ -1157,5 +1218,30 @@ public class HomeForm extends javax.swing.JFrame implements View{
             dsQly = new ArrayList<>();
         }
         this.showData(dsQly, tblModelQLX);
+    }
+    
+    
+    // ====================== QUAN LY DANGKYBANGLAI=====================
+     public void addBLX(QuanLyDangKyBangLaiXe x) {
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        dsDky.add(x);
+        file.writeToFile(dsDky, "blx.txt");
+        dsDkyBanDau = new ArrayList<>(dsDky);
+        this.showData(dsDky, tblModelBLX);
+    }
+
+    public void updateBLX(QuanLyDangKyBangLaiXe x) {
+        dsDky.remove(dongChon);
+        this.addBLX(x);
+    }
+
+    private void showQuanLyBLX() {
+        dsDky = (ArrayList<QuanLyDangKyBangLaiXe>) file.readDataFromFile("blx.txt");
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        this.showData(dsDky, tblModelBLX);
     }
 }
