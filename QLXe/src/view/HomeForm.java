@@ -1,6 +1,10 @@
 package view;
 
 
+import controller.CaoDinhNhat.ControllerQuanLyChamSocXe;
+import controller.NguyenDinhTang.QuanLyDangKyBangLai;
+import controller.NguyenTrungQuan.QuanLyBaoHiem;
+import controller.TrinhDucThang.ControllerQuanLyHoaDon;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -8,11 +12,42 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import model.CaoDinhNhat.QuanLyChamSocXe;
+import model.NguyenDinhTang.QuanLyDangKyBangLaiXe;
+import model.NguyenTrungQuan.BaoHiemXeMay;
+import model.TrinhDucThang.QuanLyHoaDon;
+import view.QuanLyChamSocXe.Sua;
+import view.QuanLyChamSocXe.ThemMoi;
+import view.QuanLyDangKyBangLai.SuaBLX;
+import view.QuanLyDangKyBangLai.ThemBLX;
 
 
-public class HomeForm extends javax.swing.JFrame {
+public class HomeForm extends javax.swing.JFrame implements View{
 
     private int dongChon = -1;
+    
+    //    DATA FOR QUANLYBANGLAIXE
+    private ArrayList<QuanLyDangKyBangLaiXe> dsDky;
+    private QuanLyDangKyBangLai file;
+    private ArrayList<QuanLyDangKyBangLaiXe> dsDkyBanDau;
+    private DefaultTableModel tblModelBLX;
+
+//    DATA FOR QUANLYCHAMSOCXE
+    private ArrayList<QuanLyChamSocXe> dsQly;
+    private DefaultTableModel tblModelQLX;
+    private ControllerQuanLyChamSocXe controllerQLX;
+
+//  DATA FOR QUANLYHOADON
+    private TreeSet<QuanLyHoaDon> dsHD; // danh sách để lưu trữ hóa đơn
+    private DefaultTableModel modelHD; // sử dụng lớp triển khai sẵn có của giao diện TableModel
+    private ControllerQuanLyHoaDon controller; // sử dụng lớp ControllerHD để điều khiển chức năng
+    private ArrayList<QuanLyHoaDon> ds2; // danh sách để lưu trữ những thay đổi của danh sách hóa đơn
+
+//    DATA FOR QUANLYBAOHIEM
+    private TreeSet<BaoHiemXeMay> listBH;
+    private ArrayList<BaoHiemXeMay> listBH2;
+    private DefaultTableModel modelBH;
+    private QuanLyBaoHiem controllerBH;
 
 
     public HomeForm() {
@@ -20,6 +55,21 @@ public class HomeForm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        // SHOW QUANLYCHAMSOCXE
+         dsQly = new ArrayList<>(); // khoi tao danh sach luu ds cham soc xe
+        tblModelQLX = (DefaultTableModel) tblDanhSachXe.getModel(); 
+        controllerQLX = new ControllerQuanLyChamSocXe();
+        showQuanLyChamSocXe();
+        
+        // SHOW QLBangLai
+         if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        file = new QuanLyDangKyBangLai();
+        dsDky = (ArrayList<QuanLyDangKyBangLaiXe>) file.readDataFromFile("blx.txt");
+        tblModelBLX = (DefaultTableModel) tblDSBLX.getModel();
+        sortByName.setSelected(true);
+        showQuanLyBLX();
     }
 
     @SuppressWarnings("unchecked")
@@ -104,7 +154,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnThemMoi.setText("Thêm mới");
         btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemMoiActionPerformed(evt);
+                btnThemQLChamSocXe(evt);
             }
         });
 
@@ -112,7 +162,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnSua.setText("Sửa thông tin");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
+                btnSuaQLChamSocXe(evt);
             }
         });
 
@@ -120,7 +170,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnXoaActionPerformed(evt);
+                btnXoaQLChamSocXe(evt);
             }
         });
 
@@ -132,7 +182,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnQuayLai.setText("Quay lại");
         btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuayLaiActionPerformed(evt);
+                btnQuayLaiQLChamSocXe(evt);
             }
         });
 
@@ -143,7 +193,7 @@ public class HomeForm extends javax.swing.JFrame {
         btnTimKiem.setText("Tìm kiếm");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemActionPerformed(evt);
+                btnTimKiemQLChamSocXe(evt);
             }
         });
 
@@ -248,7 +298,7 @@ public class HomeForm extends javax.swing.JFrame {
         jButton1.setText("Thêm");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThemBL(evt);
             }
         });
 
@@ -256,7 +306,7 @@ public class HomeForm extends javax.swing.JFrame {
         jButton2.setText("Sửa");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSuaBL(evt);
             }
         });
 
@@ -267,7 +317,7 @@ public class HomeForm extends javax.swing.JFrame {
         jButton3.setText("Xóa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnXoaBL(evt);
             }
         });
 
@@ -282,7 +332,7 @@ public class HomeForm extends javax.swing.JFrame {
         jButton4.setText("Hoàn tác");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnHoanTacBL(evt);
             }
         });
 
@@ -779,28 +829,84 @@ public class HomeForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblQLHDMouseClicked
 
-    private void btnThemMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMoiActionPerformed
+    private void btnThemQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemQLChamSocXe
+        ThemMoi themMoi = new ThemMoi(this, rootPaneCheckingEnabled);
+        themMoi.setVisible(true);
+    }//GEN-LAST:event_btnThemQLChamSocXe
 
-    }//GEN-LAST:event_btnThemMoiActionPerformed
+    private void btnSuaQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaQLChamSocXe
+         dongChon = tblDanhSachXe.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (dsQly.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            Sua sua = new Sua(this, rootPaneCheckingEnabled);
+            sua.setEditData(dsQly.get(dongChon));
+            sua.setVisible(true);
+        }
+    }//GEN-LAST:event_btnSuaQLChamSocXe
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+    private void btnXoaQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaQLChamSocXe
+        dongChon = tblDanhSachXe.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (dsQly.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và 
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsQly.remove(dongChon);
+                controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+                this.showData(dsQly, tblModelQLX);
+            }
+        }
+    }//GEN-LAST:event_btnXoaQLChamSocXe
 
-    }//GEN-LAST:event_btnSuaActionPerformed
+    private void btnQuayLaiQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiQLChamSocXe
+        //        Show lại danh sách ban đầu đọc từ file ra
+        txtTimKiemBSX.setText("");
+        showQuanLyChamSocXe();
+    }//GEN-LAST:event_btnQuayLaiQLChamSocXe
 
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-
-    }//GEN-LAST:event_btnXoaActionPerformed
-
-    private void btnQuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuayLaiActionPerformed
-
-    }//GEN-LAST:event_btnQuayLaiActionPerformed
-
-    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-
-    }//GEN-LAST:event_btnTimKiemActionPerformed
+    private void btnTimKiemQLChamSocXe(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemQLChamSocXe
+        //        Lấy ra biển số xe người dùng nhập vào để tìm 
+        String bsx = txtTimKiemBSX.getText().trim();
+//        Nếu biển số xe rỗng tức là chưa nhập biển số sẽ show ra thông báo
+        if (bsx.length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập biển số!");
+        } else {
+            ArrayList<QuanLyChamSocXe> list = controllerQLX.timKiemQLX(dsQly, bsx); // list chứa thông tin cần tìm
+//            Nếu list chứa thông tin tìm được mà rỗng show ra thông báo còn không thì show thông tin trong list ra
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy xe!");
+            } else {
+                this.showData(list, tblModelQLX);
+            }
+        }
+    }//GEN-LAST:event_btnTimKiemQLChamSocXe
 
     private void comboSapXepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSapXepActionPerformed
-
+        //        Lấy ra chỉ số của JcomboBox
+        int index = comboSapXep.getSelectedIndex();
+//        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa 
+        if (index == 0) {
+            controllerQLX.sortByThanhTien(dsQly);
+        } else if (index == 1) {
+            controllerQLX.sortByNgaySua(dsQly);
+        }
+        this.showData(dsQly, tblModelQLX);
     }//GEN-LAST:event_comboSapXepActionPerformed
 
     private void txtTimKiemBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemBHActionPerformed
@@ -840,29 +946,72 @@ public class HomeForm extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnTimKiemBHActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnThemBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemBL
+        ThemBLX them = new ThemBLX(this, rootPaneCheckingEnabled);
+        them.setVisible(true);
+    }//GEN-LAST:event_btnThemBL
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnSuaBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaBL
+      dongChon = tblDSBLX.getSelectedRow();
+        if (dsDky.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de sua!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon dong chua thong tin can sua!");
+        } else {
+            SuaBLX suaBlx = new SuaBLX(this, rootPaneCheckingEnabled);
+            suaBlx.setEditData(dsDky.get(dongChon));
+            suaBlx.setVisible(true);
+        }
+    }//GEN-LAST:event_btnSuaBL
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnXoaBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaBL
+        dongChon = tblDSBLX.getSelectedRow();
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon mot dong can xoa!");
+        } else if (dsDky.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de xoa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsDky.remove(dongChon);
+                this.showData(dsDky, tblModelBLX);
+            }
+        }
+    }//GEN-LAST:event_btnXoaBL
 
     private void txtHoTenTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenTimKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoTenTimKiemActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnHoanTacBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacBL
+        showQuanLyBLX();
+    }//GEN-LAST:event_btnHoanTacBL
 
     private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimActionPerformed
        
-      
+      String hoTenTimKiem = txtHoTenTimKiem.getText();
+        if (hoTenTimKiem.length() > 0) {
+            ArrayList<QuanLyDangKyBangLaiXe> list = new ArrayList<>();
+            for (QuanLyDangKyBangLaiXe x : dsDky) {
+                if (x.getHoTen().equals(hoTenTimKiem)) {
+                    list.add(x);
+                }
+            }
+            dsDky.clear();
+            dsDky.addAll(list);
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Khong tim thay!");
+            } else {
+                this.showData(list, tblModelBLX);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Vui long nhap thong tin!");
+        }
     }//GEN-LAST:event_btnTimActionPerformed
 
     private void sortByNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortByNameActionPerformed
@@ -874,7 +1023,13 @@ public class HomeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_sortByDateActionPerformed
 
     private void SortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortActionPerformed
-      
+       QuanLyDangKyBangLai sort = new QuanLyDangKyBangLai();
+        if (sortByName.isSelected()) {
+            sort.sortByHoTen(dsDky);
+        } else {
+            sort.sortByNgayDky(dsDky);
+        }
+        this.showData(dsDky, tblModelBLX);
     }//GEN-LAST:event_SortActionPerformed
 
     private void txtTimKiemBSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemBSXActionPerformed
@@ -989,5 +1144,104 @@ public class HomeForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtTimKiemBSX;
     // End of variables declaration//GEN-END:variables
 
+     @Override
+    public <T> void showData(ArrayList<T> list, DefaultTableModel model) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        model.setRowCount(0);
+        for (T t : list) {
+            if (t instanceof QuanLyDangKyBangLaiXe) {
+                QuanLyDangKyBangLaiXe blx = (QuanLyDangKyBangLaiXe) t;
+                tblModelBLX.addRow(new Object[]{
+                    blx.getHoTen(), blx.getSdt(), blx.getDiaChi(), blx.getNgayDky(), blx.getLoaiBang()
+                });
+
+            }
+            if (t instanceof QuanLyChamSocXe) {
+                QuanLyChamSocXe xe = (QuanLyChamSocXe) t;
+                model.addRow(new Object[]{
+                    xe.getMaChamSoc(), xe.getBienSoXe(), xe.getLoaiXe(), xe.getChuSoHuu().getHoTen(),
+                    xe.getChuSoHuu().getSdt(), xe.getVatPham().getTenVatPham(),
+                    xe.getNgaySua().format(dateFormatter),
+                    xe.getVatPham().getSoLuong(), xe.getVatPham().getDonGia(), xe.thanhTien()
+                });
+            }
+            if (t instanceof BaoHiemXeMay) {
+                BaoHiemXeMay bh = (BaoHiemXeMay) t;
+                model.addRow(new Object[]{
+                    bh.getMaBH(), bh.getCar().getChuSoHuu().getHoTen(), bh.getCar().getBienSoXe(),
+                    bh.getCar().getLoaiXe(), bh.getTimeStart().format(dateFormatter),
+                    bh.getTimeEnd().format(dateFormatter), bh.getCost()
+
+                });
+            }
+            if (t instanceof QuanLyHoaDon hd) {
+                model.addRow(new Object[]{
+                    hd.getMaHD(), hd.getKhachHang().getHoTen(),
+                    hd.getKhachHang().getDiaChi(), hd.getKhachHang().getSdt(),
+                    hd.getThoiGian().format(dateFormatter), hd.tongTien()
+                });
+            }
+        }
+    }
    
+// QUAN LY CHAM SOC XE
+    //    Phương thức này dùng để thêm thông tin chăm sóc xe mới vào danh sách
+    public void addXe(QuanLyChamSocXe x) {
+        dsQly.add(x);
+        this.showData(dsQly, tblModelQLX);
+        controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+    }
+
+//    Phương thức này dùng để cập nhật thông tin chăm sóc xe
+    public void updateXe(QuanLyChamSocXe x) {
+        int oldIndex = dongChon;
+        dsQly.remove(oldIndex);
+        dsQly.add(oldIndex, x);
+        showData(dsQly, tblModelQLX);
+        controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+    }
+
+//    Phương thức này để kiểm tra mã ID trùng 
+    public boolean checkIdTrung(String maChamSoc) {
+        for (QuanLyChamSocXe xe : dsQly) {
+            if (xe.getMaChamSoc().equalsIgnoreCase(maChamSoc)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+//    Phương thức này dùng để đọc file và show dữ liệu từ file ra khi chạy lại chương trình
+    private void showQuanLyChamSocXe() {
+        dsQly = (ArrayList<QuanLyChamSocXe>) controllerQLX.readDataFromFile("ChamSocXe.txt");
+        if (dsQly == null) {
+            dsQly = new ArrayList<>();
+        }
+        this.showData(dsQly, tblModelQLX);
+    }
+    
+    
+    // ====================== QUAN LY DANGKYBANGLAI=====================
+     public void addBLX(QuanLyDangKyBangLaiXe x) {
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        dsDky.add(x);
+        file.writeToFile(dsDky, "blx.txt");
+        dsDkyBanDau = new ArrayList<>(dsDky);
+        this.showData(dsDky, tblModelBLX);
+    }
+
+    public void updateBLX(QuanLyDangKyBangLaiXe x) {
+        dsDky.remove(dongChon);
+        this.addBLX(x);
+    }
+
+    private void showQuanLyBLX() {
+        dsDky = (ArrayList<QuanLyDangKyBangLaiXe>) file.readDataFromFile("blx.txt");
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        this.showData(dsDky, tblModelBLX);
+    }
 }
