@@ -10,7 +10,7 @@ public class QuanLyHoaDon {
     private String thoigian;
     private String tongthanhtoan;
 
-    public HoaDon(String maHD, String tenkhachhang, String diachi, String sodienthoai, String thoigian, String tongthanhtoan) {
+    public void QuanLyHoaDon(String maHD, String tenkhachhang, String diachi, String sodienthoai, String thoigian, String tongthanhtoan) {
         this.maHD = maHD;
         this.tenkhachhang = tenkhachhang;
         this.diachi = diachi;

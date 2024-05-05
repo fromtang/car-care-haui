@@ -181,7 +181,7 @@ public class LoginForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        try {
+      try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             new LoginForm().setVisible(true);
         } catch (Exception e) {
