@@ -1,6 +1,8 @@
 
 package controller.TrinhDucThang;
 
+
+import controller.ControllerFile;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -9,7 +11,7 @@ import java.util.TreeSet;
 import model.TrinhDucThang.QuanLyHoaDon;
 
 
-public class ControllerQuanLyHoaDon {
+public class ControllerQuanLyHoaDon extends ControllerFile {
     public QuanLyHoaDon searchByMaHD(TreeSet ds, int maHD) { 
         Iterator bir = ds.iterator();
         for (QuanLyHoaDon hd; bir.hasNext();) {

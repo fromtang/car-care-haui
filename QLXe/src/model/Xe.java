@@ -27,6 +27,16 @@ public class Xe implements Serializable {
             System.out.println("Co loi du lieu Xe " + e.toString());
         }
     }
+    public Xe(String bienSoXe, String loaiXe) {
+        try {
+            setBienSoXe(bienSoXe);
+            setLoaiXe(loaiXe);
+           
+        } catch (Exception e) {
+            System.out.println("Co loi du lieu Xe " + e.toString());
+        }
+    }
+    
 
     public String getBienSoXe() {
         return bienSoXe;
