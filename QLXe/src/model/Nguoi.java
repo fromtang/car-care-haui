@@ -5,6 +5,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -86,4 +87,26 @@ public class Nguoi implements Serializable {
     public String toString() {
         return "Nguoi{" + "hoTen=" + hoTen + ", diaChi=" + diaChi + ", sdt=" + sdt + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Nguoi other = (Nguoi) obj;
+        return Objects.equals(this.hoTen, other.hoTen);
+    }
+    
 }

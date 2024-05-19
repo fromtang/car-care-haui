@@ -267,6 +267,7 @@ public class LoginForm extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+<<<<<<< HEAD
 //        try {
 //            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 //                if ("Nimbus".equals(info.getName())) {
@@ -283,6 +284,9 @@ public class LoginForm extends javax.swing.JFrame {
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
 //            java.util.logging.Logger.getLogger(LoginFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
+=======
+      
+>>>>>>> cb6055ee745cc7037f9535b710530455df20ef3f
         //</editor-fold>
         //</editor-fold>
 

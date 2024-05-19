@@ -2,26 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package view.QuanLyDangKyBangLai;
+package view.QuanLyThueXe;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-import model.NguyenDinhTang.QuanLyDangKyBangLaiXe;
+import model.NguyenDinhTang.ThueXe;
 import view.HomeForm;
 
 /**
  *
  * @author admin
  */
-public class SuaBLX extends javax.swing.JDialog {
+public class SuaThueXe extends javax.swing.JDialog {
 
     /**
      * Creates new form SuaBLX
      */
     private HomeForm home;
 
-    public SuaBLX(java.awt.Frame parent, boolean modal) {
+    public SuaThueXe(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -41,15 +42,17 @@ public class SuaBLX extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        cbxLoaiBang = new javax.swing.JComboBox<>();
+        cbxLoaiXe = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         txtHoTen = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtDiaChi = new javax.swing.JTextField();
         btnCapNhat = new javax.swing.JButton();
-        txtNgayDky = new javax.swing.JTextField();
+        txtNgayThue = new javax.swing.JTextField();
         btnHuyBo = new javax.swing.JButton();
+        txtBienSo = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,16 +62,16 @@ public class SuaBLX extends javax.swing.JDialog {
 
         jLabel3.setText("Số điện thoại: ");
 
-        jLabel4.setText("Loại bằng:");
+        jLabel4.setText("Loại Xe");
 
-        cbxLoaiBang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A1", "A2", "B1", "B2" }));
-        cbxLoaiBang.addActionListener(new java.awt.event.ActionListener() {
+        cbxLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe Số", "Xe Tay Ga", "Phân Khối Lớn" }));
+        cbxLoaiXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxLoaiBangActionPerformed(evt);
+                cbxLoaiXeActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Ngày đăng ký:");
+        jLabel5.setText("Ngày Thuê");
 
         txtHoTen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,9 +101,9 @@ public class SuaBLX extends javax.swing.JDialog {
             }
         });
 
-        txtNgayDky.addActionListener(new java.awt.event.ActionListener() {
+        txtNgayThue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNgayDkyActionPerformed(evt);
+                txtNgayThueActionPerformed(evt);
             }
         });
 
@@ -110,6 +113,14 @@ public class SuaBLX extends javax.swing.JDialog {
                 btnHuyBoActionPerformed(evt);
             }
         });
+
+        txtBienSo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBienSoActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Biển Số");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,17 +150,20 @@ public class SuaBLX extends javax.swing.JDialog {
                                         .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel6)))
                         .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxLoaiBang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNgayDky, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                .addComponent(txtSdt)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNgayThue, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addComponent(txtSdt)
+                            .addComponent(txtBienSo, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -172,12 +186,16 @@ public class SuaBLX extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtNgayDky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                    .addComponent(txtNgayThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtBienSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cbxLoaiBang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
+                    .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCapNhat)
                     .addComponent(btnHuyBo))
@@ -187,9 +205,9 @@ public class SuaBLX extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxLoaiBangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiBangActionPerformed
+    private void cbxLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiXeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxLoaiBangActionPerformed
+    }//GEN-LAST:event_cbxLoaiXeActionPerformed
 
     private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
         // TODO add your handling code here:
@@ -204,38 +222,43 @@ public class SuaBLX extends javax.swing.JDialog {
     }//GEN-LAST:event_txtDiaChiActionPerformed
 
     private void btnCapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapNhatActionPerformed
-        String hoTen, diaChi, sdt, loaiBang;
-        LocalDate ngayDky = null;
+        String hoTen, diaChi, sdt, loaiXe, bienSo;
+        LocalDate ngayThue = null;
         boolean isOK = true;
 
         hoTen = txtHoTen.getText();
-        loaiBang = cbxLoaiBang.getSelectedItem().toString();
+        loaiXe = cbxLoaiXe.getSelectedItem().toString();
         diaChi = txtDiaChi.getText();
         sdt = txtSdt.getText();
+        bienSo = txtBienSo.getText();
 
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            ngayDky = LocalDate.parse(txtNgayDky.getText(), formatter);
+            ngayThue = LocalDate.parse(txtNgayThue.getText(), formatter);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Ngay dang ky khong hop le");
             isOK = false;
         }
 
         if (isOK) {
-            QuanLyDangKyBangLaiXe qlyblx = new QuanLyDangKyBangLaiXe(hoTen, diaChi, sdt, ngayDky, loaiBang);
+            ThueXe qlyblx = new ThueXe(hoTen, diaChi, sdt, ngayThue, loaiXe, bienSo);
             home.updateBLX(qlyblx);
             JOptionPane.showMessageDialog(rootPane, "Cap nhat thanh cong");
             this.dispose();
         }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
-    private void txtNgayDkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayDkyActionPerformed
+    private void txtNgayThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayThueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgayDkyActionPerformed
+    }//GEN-LAST:event_txtNgayThueActionPerformed
 
     private void btnHuyBoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyBoActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnHuyBoActionPerformed
+
+    private void txtBienSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBienSoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBienSoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,14 +277,26 @@ public class SuaBLX extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SuaBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SuaBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SuaBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SuaBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SuaThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -270,7 +305,7 @@ public class SuaBLX extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SuaBLX dialog = new SuaBLX(new javax.swing.JFrame(), true);
+                SuaThueXe dialog = new SuaThueXe(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -285,25 +320,28 @@ public class SuaBLX extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCapNhat;
     private javax.swing.JButton btnHuyBo;
-    private javax.swing.JComboBox<String> cbxLoaiBang;
+    private javax.swing.JComboBox<String> cbxLoaiXe;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtBienSo;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtHoTen;
-    private javax.swing.JTextField txtNgayDky;
+    private javax.swing.JTextField txtNgayThue;
     private javax.swing.JTextField txtSdt;
     // End of variables declaration//GEN-END:variables
 
-    public void setEditData(QuanLyDangKyBangLaiXe x) {
+    public void setEditData(ThueXe x) {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        cbxLoaiBang.setSelectedItem(x.getLoaiBang());
+        cbxLoaiXe.setSelectedItem(x.getLoaiXe());
         txtHoTen.setText(x.getHoTen());
         txtDiaChi.setText(x.getDiaChi());
         txtSdt.setText(x.getSdt());
-        txtNgayDky.setText(x.getNgayDky().format(dateFormatter));
+        txtNgayThue.setText(x.getNgayThue().format(dateFormatter));
+        txtBienSo.setText((x.getBienso()));
     }
 }

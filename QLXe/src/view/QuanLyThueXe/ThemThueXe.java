@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package view.QuanLyDangKyBangLai;
+package view.QuanLyThueXe;
+
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
-import model.NguyenDinhTang.QuanLyDangKyBangLaiXe;
+import model.NguyenDinhTang.ThueXe;
 import view.HomeForm;
 
 /**
  *
  * @author admin
  */
-public class ThemBLX extends javax.swing.JDialog {
+public class ThemThueXe extends javax.swing.JDialog {
 
     /**
      * Creates new form ThemBLX
      */
     private HomeForm main;
-    public ThemBLX(java.awt.Frame parent, boolean modal) {
+    public ThemThueXe(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -44,11 +45,13 @@ public class ThemBLX extends javax.swing.JDialog {
         btnThem = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        cbxLoaiBang = new javax.swing.JComboBox<>();
+        cbxLoaiXe = new javax.swing.JComboBox<>();
         txtHoTen = new javax.swing.JTextField();
         txtSdt = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
-        txtNgayDky = new javax.swing.JTextField();
+        txtNgayThue = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtBienSo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,7 +64,7 @@ public class ThemBLX extends javax.swing.JDialog {
 
         jLabel5.setText("Địa chỉ: ");
 
-        jLabel6.setText("Ngày đăng ký: ");
+        jLabel6.setText("Ngày Thuê ");
 
         btnThem.setText("Thêm");
         btnThem.addActionListener(new java.awt.event.ActionListener() {
@@ -77,12 +80,12 @@ public class ThemBLX extends javax.swing.JDialog {
             }
         });
 
-        jLabel7.setText("Loại bằng:");
+        jLabel7.setText("Loại Xe");
 
-        cbxLoaiBang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A1", "A2", "B1", "B2" }));
-        cbxLoaiBang.addActionListener(new java.awt.event.ActionListener() {
+        cbxLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe Số", "Xe Tay Ga", "Phân Khối Lớn" }));
+        cbxLoaiXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxLoaiBangActionPerformed(evt);
+                cbxLoaiXeActionPerformed(evt);
             }
         });
 
@@ -104,9 +107,17 @@ public class ThemBLX extends javax.swing.JDialog {
             }
         });
 
-        txtNgayDky.addActionListener(new java.awt.event.ActionListener() {
+        txtNgayThue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNgayDkyActionPerformed(evt);
+                txtNgayThueActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Biển Số Xe");
+
+        txtBienSo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBienSoActionPerformed(evt);
             }
         });
 
@@ -128,20 +139,24 @@ public class ThemBLX extends javax.swing.JDialog {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel7)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbxLoaiBang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtHoTen)
                                     .addComponent(txtSdt)
                                     .addComponent(txtDiaChi)
-                                    .addComponent(txtNgayDky, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))))
+                                    .addComponent(txtNgayThue, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                                    .addComponent(txtBienSo, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(118, 118, 118)
                         .addComponent(btnThem)
                         .addGap(84, 84, 84)
                         .addComponent(btnHuy)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,50 +178,46 @@ public class ThemBLX extends javax.swing.JDialog {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtNgayDky, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 84, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnThem)
-                            .addComponent(btnHuy))
-                        .addGap(31, 31, 31))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(cbxLoaiBang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(txtNgayThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBienSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThem)
+                    .addComponent(btnHuy))
+                .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String hoTen, sdt, diaChi, loaiBang;
-        LocalDate ngayDky = null;
+        String hoTen, sdt, diaChi, loaiXe, bienSo;
+        LocalDate ngayThue = null;
         boolean isOK = true;
         hoTen = txtHoTen.getText();
         sdt = txtSdt.getText();
         diaChi = txtDiaChi.getText();
-        loaiBang = cbxLoaiBang.getSelectedItem().toString();
+        loaiXe = cbxLoaiXe.getSelectedItem().toString();
+        bienSo = txtBienSo.getText();
 
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            ngayDky = LocalDate.parse(txtNgayDky.getText(), formatter);
+            ngayThue = LocalDate.parse(txtNgayThue.getText(), formatter);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Ngay khong hop le!");
             isOK = false;
         }
         if (isOK) {
-            QuanLyDangKyBangLaiXe qly = new QuanLyDangKyBangLaiXe(hoTen, diaChi, sdt, ngayDky, loaiBang);
+            ThueXe qly = new ThueXe(hoTen, diaChi, sdt, ngayThue, loaiXe, bienSo);
             main.addBLX(qly);
             JOptionPane.showMessageDialog(rootPane, "Them thanh cong");
-
-//            txtHoTen.setText("");
-//            txtSdt.setText("");
-//            txtDiaChi.setText("");
-//            txtNgayDky.setText("");
 
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -215,9 +226,9 @@ public class ThemBLX extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_btnHuyActionPerformed
 
-    private void cbxLoaiBangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiBangActionPerformed
+    private void cbxLoaiXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLoaiXeActionPerformed
 
-    }//GEN-LAST:event_cbxLoaiBangActionPerformed
+    }//GEN-LAST:event_cbxLoaiXeActionPerformed
 
     private void txtHoTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoTenActionPerformed
         // TODO add your handling code here:
@@ -231,9 +242,13 @@ public class ThemBLX extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDiaChiActionPerformed
 
-    private void txtNgayDkyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayDkyActionPerformed
+    private void txtNgayThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayThueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgayDkyActionPerformed
+    }//GEN-LAST:event_txtNgayThueActionPerformed
+
+    private void txtBienSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBienSoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBienSoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,14 +267,26 @@ public class ThemBLX extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThemBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThemBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThemBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThemBLX.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ThemThueXe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -268,7 +295,7 @@ public class ThemBLX extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ThemBLX dialog = new ThemBLX(new javax.swing.JFrame(), true);
+                ThemThueXe dialog = new ThemThueXe(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -283,16 +310,18 @@ public class ThemBLX extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnThem;
-    private javax.swing.JComboBox<String> cbxLoaiBang;
+    private javax.swing.JComboBox<String> cbxLoaiXe;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtBienSo;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtHoTen;
-    private javax.swing.JTextField txtNgayDky;
+    private javax.swing.JTextField txtNgayThue;
     private javax.swing.JTextField txtSdt;
     // End of variables declaration//GEN-END:variables
 }
