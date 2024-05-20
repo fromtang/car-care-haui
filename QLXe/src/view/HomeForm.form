@@ -1,886 +1,1246 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+package view;
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup3">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup4">
-    </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup5">
-    </Component>
-  </NonVisualComponents>
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="H&#x1ec7; Th&#x1ed1;ng Qu&#x1ea3;n L&#xfd; C&#x1eed;a H&#xe0;ng Xe "/>
-  </Properties>
-  <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
-  </SyntheticProperties>
-  <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-  </AuxValues>
+import controller.CaoDinhNhat.ControllerQuanLyChamSocXe;
+import controller.NguyenDinhTang.QLDangKyThueXe;
+import controller.NguyenTrungQuan.QuanLyXe;
+import controller.TrinhDucThang.ControllerQuanLyHoaDon;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.TreeSet;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
-  </Layout>
-  <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
-      <Properties>
-        <Property name="tabPlacement" type="int" value="2"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="0"/>
-        </Property>
-      </Properties>
+import model.CaoDinhNhat.QuanLyChamSocXe;
+import model.NguyenDinhTang.ThueXe;
+import model.NguyenTrungQuan.XeStore;
+import model.TrinhDucThang.QuanLyHoaDon;
+import view.HoaDon.SuaHoaDon;
+import view.HoaDon.ThemHoaDon;
+import view.HoaDon.XemChiTiet;
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-      <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Qu&#x1ea3;n L&#xfd; B&#x1ea3;o D&#x1b0;&#x1ee1;ng Xe">
-                <Property name="tabTitle" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; B&#x1ea3;o D&#x1b0;&#x1ee1;ng Xe"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+import view.NguyenTrungQuan.SuaXeStore;
+import view.NguyenTrungQuan.ThemXeStore;
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane4" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtTimKiemBSX" min="-2" pref="146" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnTimKiem" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="2172" max="32767" attributes="0"/>
-                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="comboSapXep" min="-2" pref="198" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel5" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btnThemMoi" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="126" max="-2" attributes="0"/>
-                      <Component id="btnSua" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                      <Component id="btnXoa" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                      <Component id="btnQuayLai" min="-2" pref="101" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="376" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTimKiemBSX" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboSapXep" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" min="-2" pref="264" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnSua" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnQuayLai" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnThemMoi" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="109" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JButton" name="btnThemMoi">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Th&#xea;m m&#x1edb;i"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemQLChamSocXe"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSua">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1eed;a th&#xf4;ng tin"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaQLChamSocXe"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnXoa">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaQLChamSocXe"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="DANH S&#xc1;CH XE B&#x1ea2;O D&#x1af;&#x1ee0;NG"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnQuayLai">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuayLaiQLChamSocXe"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Bi&#x1ec3;n s&#x1ed1; xe:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnTimKiem">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiemQLChamSocXe"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtTimKiemBSX">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p bi&#x1ec3;n s&#x1ed1; xe"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimKiemBSXActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel7">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1eaf;p x&#x1ebf;p theo:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="comboSapXep">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="T&#x103;ng d&#x1ea7;n th&#xe0;nh ti&#x1ec1;n"/>
-                    <StringItem index="1" value="Ng&#xe0;y s&#x1eed;a g&#x1ea7;n nh&#x1ea5;t"/>
-                    <StringItem index="2" value=" "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboSapXepActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
+import view.QuanLyChamSocXe.Sua;
+import view.QuanLyChamSocXe.ThemMoi;
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblDanhSachXe">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="10" rowCount="0">
-                        <Column editable="true" title="ID" type="java.lang.Object"/>
-                        <Column editable="true" title="Bi&#x1ec3;n s&#x1ed1; xe" type="java.lang.Object"/>
-                        <Column editable="true" title="Lo&#x1ea1;i xe" type="java.lang.Object"/>
-                        <Column editable="true" title="Ch&#x1ee7; s&#x1edf; h&#x1eef;u" type="java.lang.Object"/>
-                        <Column editable="true" title="S&#x110;T" type="java.lang.Object"/>
-                        <Column editable="true" title="S&#x1eed;a ch&#x1eef;a" type="java.lang.Object"/>
-                        <Column editable="true" title="Ng&#xe0;y s&#x1eed;a" type="java.lang.Object"/>
-                        <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="&#x110;&#x1a1;n gi&#xe1;" type="java.lang.Object"/>
-                        <Column editable="true" title="Th&#xe0;nh ti&#x1ec1;n" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel5">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Qu&#x1ea3;n L&#xfd; Thu&#xea; Xe">
-                <Property name="tabTitle" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Thu&#xea; Xe"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+import view.QuanLyThueXe.ThemThueXe;
+import view.QuanLyThueXe.SuaThueXe;
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtHoTenTimKiem" min="-2" pref="245" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnTim" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                              <Component id="sortByName" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="sortByDate" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="Sort" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="1827" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="494" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTim" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtHoTenTimKiem" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="sortByDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Sort" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="sortByName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="227" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="126" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel10">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="DANH S&#xc1;CH THU&#xca; XE"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
+public class HomeForm extends javax.swing.JFrame implements View {
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblThueXe">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="0">
-                        <Column editable="true" title="H&#x1ecd; v&#xe0; t&#xea;n" type="java.lang.Object"/>
-                        <Column editable="true" title="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i" type="java.lang.Object"/>
-                        <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.Object"/>
-                        <Column editable="true" title="Ng&#xe0;y Thu&#xea;" type="java.lang.Object"/>
-                        <Column editable="true" title="Xe Thu&#xea;" type="java.lang.Object"/>
-                        <Column editable="true" title="Bi&#x1ec3;n S&#x1ed1;" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemBL"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaBL"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="H&#x1ecd; v&#xe0; t&#xea;n: "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaBL"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtHoTenTimKiem">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHoTenTimKiemActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Ho&#xe0;n t&#xe1;c"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHoanTacBL"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnTim">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="sortByName">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup4"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortByNameActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="sortByDate">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup4"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Ng&#xe0;y &#x111;&#x103;ng k&#xfd;"/>
-                <Property name="actionCommand" type="java.lang.String" value="Ng&#xe0;y Thu&#xea;"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortByDateActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="Sort">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1eaf;p x&#x1ebf;p"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SortActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel7">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Qu&#x1ea3;n L&#xfd; Ho&#xe1; &#x110;&#x1a1;n">
-                <Property name="tabTitle" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Ho&#xe1; &#x110;&#x1a1;n"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+    private int dongChon = -1;
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="2777" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel4" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="jPanel9" pref="2663" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" pref="44" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="226" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="76" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
+    //    DATA FOR QUAN LY THUE XE
+    private ArrayList<ThueXe> dsDky;
+    private QLDangKyThueXe file;
+    private ArrayList<ThueXe> dsDkyBanDau;
+    private DefaultTableModel tblModelBLX;
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblQLHD">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder>
-                          <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder>
-                              <Font PropertyName="font" name="Segoe UI" size="14" style="0"/>
-                            </TitledBorder>
-                          </Border>
-                          <Font PropertyName="font" name="Segoe UI" size="18" style="0"/>
-                        </TitledBorder>
-                      </Border>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="0">
-                        <Column editable="true" title="M&#xe3; h&#xf3;a &#x111;&#x1a1;n" type="java.lang.Object"/>
-                        <Column editable="true" title="Kh&#xe1;ch h&#xe0;ng" type="java.lang.Object"/>
-                        <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.Object"/>
-                        <Column editable="true" title="S&#x110;T" type="java.lang.Object"/>
-                        <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
-                        <Column editable="true" title="T&#x1ed5;ng thanh to&#xe1;n" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblQLHDMouseClicked"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="HomeFrm_tblQLHD"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="DANH S&#xc1;CH H&#xd3;A &#x110;&#x1a0;N"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JPanel" name="jPanel9">
+//    DATA FOR QUANLYCHAMSOCXE
+    private ArrayList<QuanLyChamSocXe> dsQly;
+    private DefaultTableModel tblModelQLX;
+    private ControllerQuanLyChamSocXe controllerQLX;
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JButton" name="btThemHD">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btThemHDActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btSuaHD">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btSuaHDActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btXoaHD">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btXoaHDActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btXemChiTietHD">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Xem chi ti&#x1ebf;t"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btXemChiTietHDActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnReset">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Refresh"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnResetActionPerformed"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel6">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Qu&#x1ea3;n L&#xfd; Xe C&#x1eed;a H&#xe0;ng">
-                <Property name="tabTitle" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Xe C&#x1eed;a H&#xe0;ng"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+//  DATA FOR QUANLYHOADON
+    private TreeSet<QuanLyHoaDon> dsHD; // danh sách để lưu trữ hóa đơn
+    private DefaultTableModel modelHD; // sử dụng lớp triển khai sẵn có của giao diện TableModel
+    private ControllerQuanLyHoaDon controller; // sử dụng lớp ControllerHD để điều khiển chức năng
+    private ArrayList<QuanLyHoaDon> ds2; // danh sách để lưu trữ những thay đổi của danh sách hóa đơn
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Component id="txtTimKiemXeCuaHang" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnTimKiemBH" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="2186" max="32767" attributes="0"/>
-                      <Component id="cbbSapXepBH" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="474" max="-2" attributes="0"/>
-                      <Component id="btnThemBH" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                      <Component id="btnSuaBH" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                      <Component id="btnXoaBH" min="-2" pref="91" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane5" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="44" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtTimKiemXeCuaHang" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnTimKiemBH" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbbSapXepBH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="jScrollPane5" min="-2" pref="254" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnThemBH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSuaBH" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnXoaBH" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="120" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtTimKiemXeCuaHang">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p th&#xf4;ng tin &#x111;&#x1ec3; t&#xec;m ki&#x1ebf;m"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimKiemXeCuaHangActionPerformed"/>
-              </Events>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
+//    DATA FOR QUANLYBAOHIEM
+    private ArrayList<XeStore> dsXe;
+    private DefaultTableModel modelXeStore;
+    private QuanLyXe controllerXeStore;
+    private ArrayList<XeStore> dsXeBanDau;
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblXeCuaHang">
-                  <Properties>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="T&#xea;n Xe" type="java.lang.Object"/>
-                        <Column editable="true" title="Bi&#x1ec3;n s&#x1ed1;" type="java.lang.Object"/>
-                        <Column editable="true" title="Lo&#x1ea1;i xe" type="java.lang.Object"/>
-                        <Column editable="true" title="Ng&#xe0;y Nh&#x1ead;p" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JComboBox" name="cbbSapXepBH">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="S&#x1eaf;p X&#x1ebf;p Theo Lo&#x1ea1;i Xe"/>
-                    <StringItem index="1" value="S&#x1eaf;p X&#x1ebf;p Theo Ng&#xe0;y Nh&#x1ead;p"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbSapXepBHActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnThemBH">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Th&#xea;m m&#x1edb;i"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemBHActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSuaBH">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuaBHActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnXoaBH">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaBHActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="18" style="1"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; XE C&#x1eec;A H&#xc0;NG"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnTimKiemBH">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimKiemBHActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    public HomeForm() {
+        initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="125" max="-2" attributes="0"/>
-                  <EmptySpace pref="448" max="32767" attributes="0"/>
-                  <Component id="jLabel3" min="-2" pref="578" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="40" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="24" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nh&#xf3;m 1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="36" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="H&#x1ec7; Th&#x1ed1;ng Qu&#x1ea3;n L&#xfd; C&#x1eed;a H&#xe0;ng Xe"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-  </SubComponents>
-</Form>
+        // SHOW QUANLYCHAMSOCXE
+        dsQly = new ArrayList<>(); // khoi tao danh sach luu ds cham soc xe
+        tblModelQLX = (DefaultTableModel) tblDanhSachXe.getModel();
+        controllerQLX = new ControllerQuanLyChamSocXe();
+        showQuanLyChamSocXe();
+
+        // SHOW QL THUE XE
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        file = new QLDangKyThueXe();
+        dsDky = (ArrayList<ThueXe>) file.readDataFromFile("thuexe.txt");
+        tblModelBLX = (DefaultTableModel) tblThueXe.getModel();
+        sortByName.setSelected(true);
+        showQuanLyBLX();
+
+        // SHOW QUAN LY XE STORE
+        if (dsXe == null) {
+            dsXe = new ArrayList<>();
+        }
+        controllerXeStore = new QuanLyXe();
+        dsXe = (ArrayList<XeStore>) file.readDataFromFile("dsxe.txt");
+        modelXeStore = (DefaultTableModel) tblXeCuaHang.getModel();
+        sortByName.setSelected(true);
+        showQuanLyXeStore();
+        
+        // SHOW QUAN LY HOA DON
+         dsHD = new TreeSet<>();
+        modelHD = (DefaultTableModel) tblQLHD.getModel();
+        controller = new ControllerQuanLyHoaDon();
+        showHD();
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        btnThemMoi = new javax.swing.JButton();
+        btnSua = new javax.swing.JButton();
+        btnXoa = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnQuayLai = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        btnTimKiem = new javax.swing.JButton();
+        txtTimKiemBSX = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        comboSapXep = new javax.swing.JComboBox<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblDanhSachXe = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblThueXe = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        txtHoTenTimKiem = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        btnTim = new javax.swing.JButton();
+        sortByName = new javax.swing.JRadioButton();
+        sortByDate = new javax.swing.JRadioButton();
+        Sort = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblQLHD = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        btThemHD = new javax.swing.JButton();
+        btSuaHD = new javax.swing.JButton();
+        btXoaHD = new javax.swing.JButton();
+        btXemChiTietHD = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        txtTimKiemXeCuaHang = new javax.swing.JTextField();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblXeCuaHang = new javax.swing.JTable();
+        cbbSapXepBH = new javax.swing.JComboBox<>();
+        btnThemBH = new javax.swing.JButton();
+        btnSuaBH = new javax.swing.JButton();
+        btnXoaBH = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnTimKiemBH = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hệ Thống Quản Lý Cửa Hàng Xe ");
+
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        btnThemMoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThemMoi.setText("Thêm mới");
+        btnThemMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemQLChamSocXe(evt);
+            }
+        });
+
+        btnSua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSua.setText("Sửa thông tin");
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaQLChamSocXe(evt);
+            }
+        });
+
+        btnXoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaQLChamSocXe(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("DANH SÁCH XE BẢO DƯỠNG");
+
+        btnQuayLai.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnQuayLai.setText("Quay lại");
+        btnQuayLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuayLaiQLChamSocXe(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Biển số xe:");
+
+        btnTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTimKiem.setText("Tìm kiếm");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemQLChamSocXe(evt);
+            }
+        });
+
+        txtTimKiemBSX.setToolTipText("Nhập biển số xe");
+        txtTimKiemBSX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemBSXActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Sắp xếp theo:");
+
+        comboSapXep.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboSapXep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tăng dần thành tiền", "Ngày sửa gần nhất", " " }));
+        comboSapXep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSapXepActionPerformed(evt);
+            }
+        });
+
+        tblDanhSachXe.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Biển số xe", "Loại xe", "Chủ sở hữu", "SĐT", "Sửa chữa", "Ngày sửa", "Số lượng", "Đơn giá", "Thành tiền"
+            }
+        ));
+        jScrollPane4.setViewportView(tblDanhSachXe);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtTimKiemBSX, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnTimKiem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2166, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnThemMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126)
+                .addComponent(btnSua)
+                .addGap(187, 187, 187)
+                .addComponent(btnXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111)
+                .addComponent(btnQuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(376, 376, 376))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTimKiem)
+                    .addComponent(comboSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtTimKiemBSX, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSua)
+                    .addComponent(btnXoa)
+                    .addComponent(btnQuayLai)
+                    .addComponent(btnThemMoi))
+                .addGap(109, 109, 109))
+        );
+
+        jTabbedPane1.addTab("Quản Lý Bảo Dưỡng Xe", jPanel2);
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("DANH SÁCH THUÊ XE");
+
+        tblThueXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblThueXe.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Họ và tên", "Số điện thoại", "Địa chỉ", "Ngày Thuê", "Xe Thuê", "Biển Số"
+            }
+        ));
+        jScrollPane1.setViewportView(tblThueXe);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemBL(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setText("Sửa");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaBL(evt);
+            }
+        });
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel9.setText("Họ và tên: ");
+
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton3.setText("Xóa");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaBL(evt);
+            }
+        });
+
+        txtHoTenTimKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtHoTenTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoTenTimKiemActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton4.setText("Hoàn tác");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHoanTacBL(evt);
+            }
+        });
+
+        btnTim.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTim.setText("Tìm kiếm");
+        btnTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimActionPerformed(evt);
+            }
+        });
+
+        buttonGroup4.add(sortByName);
+        sortByName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sortByName.setText("Họ tên");
+        sortByName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByNameActionPerformed(evt);
+            }
+        });
+
+        buttonGroup4.add(sortByDate);
+        sortByDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        sortByDate.setText("Ngày đăng ký");
+        sortByDate.setActionCommand("Ngày Thuê");
+        sortByDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortByDateActionPerformed(evt);
+            }
+        });
+
+        Sort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Sort.setText("Sắp xếp");
+        Sort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtHoTenTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnTim)
+                .addGap(120, 120, 120)
+                .addComponent(sortByName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sortByDate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Sort)
+                .addContainerGap(1997, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(1827, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(70, 70, 70)
+                .addComponent(jButton2)
+                .addGap(62, 62, 62)
+                .addComponent(jButton3)
+                .addGap(63, 63, 63)
+                .addComponent(jButton4)
+                .addGap(494, 494, 494))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtHoTenTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTim)
+                    .addComponent(sortByName)
+                    .addComponent(sortByDate)
+                    .addComponent(Sort))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(127, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Quản Lý Thuê Xe", jPanel5);
+
+        tblQLHD.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        tblQLHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblQLHD.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã hóa đơn", "Khách hàng", "Địa chỉ", "SĐT", "Thời gian", "Tổng thanh toán"
+            }
+        ));
+        tblQLHD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblQLHD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblQLHDMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblQLHD);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("DANH SÁCH HÓA ĐƠN");
+
+        btThemHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btThemHD.setText("Thêm");
+        btThemHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemHDActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btThemHD);
+
+        btSuaHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btSuaHD.setText("Sửa");
+        btSuaHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSuaHDActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btSuaHD);
+
+        btXoaHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btXoaHD.setText("Xóa");
+        btXoaHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaHDActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btXoaHD);
+
+        btXemChiTietHD.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btXemChiTietHD.setText("Xem chi tiết");
+        btXemChiTietHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXemChiTietHDActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btXemChiTietHD);
+
+        btnReset.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnReset.setText("Refresh");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+        jPanel9.add(btnReset);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 2663, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(159, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Quản Lý Hoá Đơn", jPanel7);
+
+        txtTimKiemXeCuaHang.setToolTipText("Nhập thông tin để tìm kiếm");
+        txtTimKiemXeCuaHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemXeCuaHangActionPerformed(evt);
+            }
+        });
+
+        tblXeCuaHang.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Tên Xe", "Biển số", "Loại xe", "Ngày Nhập"
+            }
+        ));
+        jScrollPane5.setViewportView(tblXeCuaHang);
+
+        cbbSapXepBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbbSapXepBH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sắp Xếp Theo Loại Xe", "Sắp Xếp Theo Ngày Nhập" }));
+        cbbSapXepBH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbSapXepBHActionPerformed(evt);
+            }
+        });
+
+        btnThemBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThemBH.setText("Thêm mới");
+        btnThemBH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemBHActionPerformed(evt);
+            }
+        });
+
+        btnSuaBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSuaBH.setText("Sửa");
+        btnSuaBH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaBHActionPerformed(evt);
+            }
+        });
+
+        btnXoaBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnXoaBH.setText("Xóa");
+        btnXoaBH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaBHActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("QUẢN LÝ XE CỬA HÀNG");
+
+        btnTimKiemBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTimKiemBH.setText("Tìm kiếm");
+        btnTimKiemBH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemBHActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(txtTimKiemXeCuaHang, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnTimKiemBH)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2186, Short.MAX_VALUE)
+                .addComponent(cbbSapXepBH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(474, 474, 474)
+                .addComponent(btnThemBH)
+                .addGap(135, 135, 135)
+                .addComponent(btnSuaBH, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127)
+                .addComponent(btnXoaBH, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTimKiemXeCuaHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnTimKiemBH)
+                        .addComponent(cbbSapXepBH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThemBH)
+                    .addComponent(btnSuaBH)
+                    .addComponent(btnXoaBH))
+                .addContainerGap(121, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Quản Lý Xe Cửa Hàng", jPanel6);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel2.setText("Nhóm 1");
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel3.setText("Hệ Thống Quản Lý Cửa Hàng Xe");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 448, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btThemHDActionPerformed(java.awt.event.ActionEvent evt) {                                         
+          new ThemHoaDon(this, rootPaneCheckingEnabled).setVisible(true);
+    }                                        
+
+    private void btSuaHDActionPerformed(java.awt.event.ActionEvent evt) {                                        
+         if (dongChon != -1) {
+            new SuaHoaDon(this, rootPaneCheckingEnabled).setVisible(true);
+        } else
+            JOptionPane.showMessageDialog(this,
+                    "Bạn chưa chọn dòng để sửa", "Thông báo", WIDTH);
+    }                                       
+
+    private void btXoaHDActionPerformed(java.awt.event.ActionEvent evt) {                                        
+         if (dongChon != -1) {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane, "Bạn có chắc chắn muốn xóa không?",
+                    "Xác nhận xóa", JOptionPane.YES_NO_OPTION);
+            // Người dùng đã chọn đồng ý
+            if (confirm == JOptionPane.YES_OPTION) {
+                QuanLyHoaDon hd = searchObj();
+                dsHD.remove(hd);
+                ds2 = new ArrayList<>(dsHD);
+                showData(ds2, modelHD);
+                controller.writeToFile(dsHD, "HoaDon.txt");
+            }
+        } else
+            JOptionPane.showMessageDialog(this,
+                    "Bạn chưa chọn dòng để xóa", "Thông báo", WIDTH);
+    }                                       
+
+    private void btXemChiTietHDActionPerformed(java.awt.event.ActionEvent evt) {                                               
+          if (dongChon != -1) {
+            new XemChiTiet(this, rootPaneCheckingEnabled).setVisible(true);
+        } else
+            JOptionPane.showMessageDialog(this,
+                    "Bạn chưa chọn dòng để xem thông tin chi tiết", "Thông báo", WIDTH);
+    }                                              
+
+    private void tblQLHDMouseClicked(java.awt.event.MouseEvent evt) {                                     
+         dongChon = tblQLHD.getSelectedRow();
+    }                                    
+
+    private void btnThemQLChamSocXe(java.awt.event.ActionEvent evt) {                                    
+        ThemMoi themMoi = new ThemMoi(this, rootPaneCheckingEnabled);
+        themMoi.setVisible(true);
+    }                                   
+
+    private void btnSuaQLChamSocXe(java.awt.event.ActionEvent evt) {                                   
+        dongChon = tblDanhSachXe.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì gọi đến màn hình sửa */
+        if (dsQly.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin xe để sửa!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
+        } else {
+            Sua sua = new Sua(this, rootPaneCheckingEnabled);
+            sua.setEditData(dsQly.get(dongChon));
+            sua.setVisible(true);
+        }
+    }                                  
+
+    private void btnXoaQLChamSocXe(java.awt.event.ActionEvent evt) {                                   
+        dongChon = tblDanhSachXe.getSelectedRow();
+        /*       Nếu danh sách rỗng hoặc người dùng chưa chọn dòng  thì in ra thông báo
+        còn nếu không thì show ra màn hình xác nhận xóa */
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng cần xóa!");
+        } else if (dsQly.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xóa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            /*           Người dùng chọn Yes sẽ tiến hành xóa thông tin khỏi danh sách và 
+            show lại danh sách sau khi xóa */
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsQly.remove(dongChon);
+                controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+                this.showData(dsQly, tblModelQLX);
+            }
+        }
+    }                                  
+
+    private void btnQuayLaiQLChamSocXe(java.awt.event.ActionEvent evt) {                                       
+        //        Show lại danh sách ban đầu đọc từ file ra
+        txtTimKiemBSX.setText("");
+        showQuanLyChamSocXe();
+    }                                      
+
+    private void btnTimKiemQLChamSocXe(java.awt.event.ActionEvent evt) {                                       
+        //        Lấy ra biển số xe người dùng nhập vào để tìm 
+        String bsx = txtTimKiemBSX.getText().trim();
+//        Nếu biển số xe rỗng tức là chưa nhập biển số sẽ show ra thông báo
+        if (bsx.length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập biển số!");
+        } else {
+            ArrayList<QuanLyChamSocXe> list = controllerQLX.timKiemQLX(dsQly, bsx); // list chứa thông tin cần tìm
+//            Nếu list chứa thông tin tìm được mà rỗng show ra thông báo còn không thì show thông tin trong list ra
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy xe!");
+            } else {
+                this.showData(list, tblModelQLX);
+            }
+        }
+    }                                      
+
+    private void comboSapXepActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        //        Lấy ra chỉ số của JcomboBox
+        int index = comboSapXep.getSelectedIndex();
+//        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa 
+        if (index == 0) {
+            controllerQLX.sortByThanhTien(dsQly);
+        } else if (index == 1) {
+            controllerQLX.sortByNgaySua(dsQly);
+        }
+        this.showData(dsQly, tblModelQLX);
+    }                                           
+
+    private void txtTimKiemXeCuaHangActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+        // TODO add your handling code here:
+    }                                                   
+
+    private void cbbSapXepBHActionPerformed(java.awt.event.ActionEvent evt) {                                            
+          int index = comboSapXep.getSelectedIndex();
+//        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa 
+        if (index == 0) {
+            controllerXeStore.sortByLoaiXe(dsXe);
+        } else if (index == 1) {
+            controllerXeStore.sortByNgayNhap(dsXe);
+        }
+        this.showData(dsXe, modelXeStore);
+    }                                           
+
+    private void btnThemBHActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        ThemXeStore themMoi = new ThemXeStore(this, rootPaneCheckingEnabled);
+        themMoi.setVisible(true);
+
+    }                                         
+
+    private void btnSuaBHActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        dongChon = tblXeCuaHang.getSelectedRow();
+
+        if (dsXe.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de sua !");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon dong chua thong tin can sua!");
+        } else {
+            SuaXeStore suaXeStore = new SuaXeStore(this, rootPaneCheckingEnabled);
+            suaXeStore.setEditData(dsXe.get(dongChon));
+            suaXeStore.setVisible(true);
+        }
+    }                                        
+
+    private void btnXoaBHActionPerformed(java.awt.event.ActionEvent evt) {                                         
+         dongChon = tblXeCuaHang.getSelectedRow();
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon mot dong can xoa!");
+        } else if (dsXe.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de xoa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsXe.remove(dongChon);
+                 controllerXeStore.writeToFile(dsXe, "dsxe.txt");
+                this.showData(dsXe, modelXeStore);
+            }
+        }
+    }                                        
+
+    private void btnTimKiemBHActionPerformed(java.awt.event.ActionEvent evt) {                                             
+             String tenxeTimKiem = txtTimKiemXeCuaHang.getText();
+        if (tenxeTimKiem.length() > 0) {
+            ArrayList<XeStore> list = new ArrayList<>();
+            for (XeStore x : dsXe) {
+                if (x.getTenXe().equals(tenxeTimKiem)) {
+                    list.add(x);
+                }
+            }
+            dsXe.clear();
+            dsXe.addAll(list);
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Khong tim thay!");
+            } else {
+                this.showData(list, modelXeStore);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Vui long nhap thong tin!");
+        }
+    }                                            
+
+    private void btnThemBL(java.awt.event.ActionEvent evt) {                           
+        ThemThueXe them = new ThemThueXe(this, rootPaneCheckingEnabled);
+        them.setVisible(true);
+    }                          
+
+    private void btnSuaBL(java.awt.event.ActionEvent evt) {                          
+        dongChon = tblThueXe.getSelectedRow();
+        if (dsDky.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de sua!");
+        } else if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon dong chua thong tin can sua!");
+        } else {
+            SuaThueXe suaBlx = new SuaThueXe(this, rootPaneCheckingEnabled);
+            suaBlx.setEditData(dsDky.get(dongChon));
+            suaBlx.setVisible(true);
+        }
+    }                         
+
+    private void btnXoaBL(java.awt.event.ActionEvent evt) {                          
+        dongChon = tblThueXe.getSelectedRow();
+        if (dongChon == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hay chon mot dong can xoa!");
+        } else if (dsDky.isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de xoa!");
+        } else {
+            int confirm = JOptionPane.showConfirmDialog(
+                    rootPane,
+                    "Bạn có chắc chắn muốn xóa?",
+                    "Xác nhận xóa",
+                    JOptionPane.YES_NO_OPTION
+            );
+            if (confirm == JOptionPane.YES_OPTION) {
+                dsDky.remove(dongChon);
+                 file.writeToFile(dsDky, "thuexe.txt");
+                this.showData(dsDky, tblModelBLX);
+            }
+        }
+    }                         
+
+    private void txtHoTenTimKiemActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
+
+    private void btnHoanTacBL(java.awt.event.ActionEvent evt) {                              
+        showQuanLyBLX();
+    }                             
+
+    private void btnTimActionPerformed(java.awt.event.ActionEvent evt) {                                       
+
+        String hoTenTimKiem = txtHoTenTimKiem.getText();
+        if (hoTenTimKiem.length() > 0) {
+            ArrayList<ThueXe> list = new ArrayList<>();
+            for (ThueXe x : dsDky) {
+                if (x.getHoTen().equals(hoTenTimKiem)) {
+                    list.add(x);
+                }
+            }
+            dsDky.clear();
+            dsDky.addAll(list);
+            if (list.isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Khong tim thay!");
+            } else {
+                this.showData(list, tblModelBLX);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Vui long nhap thong tin!");
+        }
+    }                                      
+
+    private void sortByNameActionPerformed(java.awt.event.ActionEvent evt) {                                           
+
+    }                                          
+
+    private void sortByDateActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    private void SortActionPerformed(java.awt.event.ActionEvent evt) {                                     
+        QLDangKyThueXe sort = new QLDangKyThueXe();
+        if (sortByName.isSelected()) {
+            sort.sortByHoTen(dsDky);
+        } else {
+            sort.sortByNgayDky(dsDky);
+        }
+        this.showData(dsDky, tblModelBLX);
+    }                                    
+
+    private void txtTimKiemBSXActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+    }                                             
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    }                                        
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(HomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(HomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(HomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(HomeForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            new HomeForm().setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton Sort;
+    private javax.swing.JButton btSuaHD;
+    private javax.swing.JButton btThemHD;
+    private javax.swing.JButton btXemChiTietHD;
+    private javax.swing.JButton btXoaHD;
+    private javax.swing.JButton btnQuayLai;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnSuaBH;
+    private javax.swing.JButton btnThemBH;
+    private javax.swing.JButton btnThemMoi;
+    private javax.swing.JButton btnTim;
+    private javax.swing.JButton btnTimKiem;
+    private javax.swing.JButton btnTimKiemBH;
+    private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXoaBH;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JComboBox<String> cbbSapXepBH;
+    private javax.swing.JComboBox<String> comboSapXep;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JRadioButton sortByDate;
+    private javax.swing.JRadioButton sortByName;
+    private javax.swing.JTable tblDanhSachXe;
+    private javax.swing.JTable tblQLHD;
+    private javax.swing.JTable tblThueXe;
+    private javax.swing.JTable tblXeCuaHang;
+    private javax.swing.JTextField txtHoTenTimKiem;
+    private javax.swing.JTextField txtTimKiemBSX;
+    private javax.swing.JTextField txtTimKiemXeCuaHang;
+    // End of variables declaration                   
+
+    @Override
+    public <T> void showData(ArrayList<T> list, DefaultTableModel model) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        model.setRowCount(0);
+        for (T t : list) {
+            if (t instanceof ThueXe) {
+                ThueXe blx = (ThueXe) t;
+                model.addRow(new Object[]{
+                    blx.getHoTen(), blx.getSdt(), blx.getDiaChi(), blx.getNgayThue(), blx.getLoaiXe(), blx.getBienso()
+                });
+
+            }
+            if (t instanceof QuanLyChamSocXe) {
+                QuanLyChamSocXe xe = (QuanLyChamSocXe) t;
+                model.addRow(new Object[]{
+                    xe.getMaChamSoc(), xe.getBienSoXe(), xe.getLoaiXe(), xe.getChuSoHuu().getHoTen(),
+                    xe.getChuSoHuu().getSdt(), xe.getVatPham().getTenVatPham(),
+                    xe.getNgaySua().format(dateFormatter),
+                    xe.getVatPham().getSoLuong(), xe.getVatPham().getDonGia(), xe.thanhTien()
+                });
+            }
+            if (t instanceof XeStore) {
+                XeStore bh = (XeStore) t;
+                model.addRow(new Object[]{
+                    bh.getTenXe(),
+                    bh.getCar().getBienSoXe(),
+                    bh.getCar().getLoaiXe(),
+                    bh.getNgayNhap(),});
+            }
+            if (t instanceof QuanLyHoaDon hd) {
+                model.addRow(new Object[]{
+                    hd.getMaHD(), hd.getKhachHang().getHoTen(),
+                    hd.getKhachHang().getDiaChi(), hd.getKhachHang().getSdt(),
+                    hd.getThoiGian().format(dateFormatter), hd.tongTien()
+                });
+            }
+        }
+    }
+
+// QUAN LY CHAM SOC XE
+    //    Phương thức này dùng để thêm thông tin chăm sóc xe mới vào danh sách
+    public void addXe(QuanLyChamSocXe x) {
+        dsQly.add(x);
+        this.showData(dsQly, tblModelQLX);
+        controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+    }
+
+//    Phương thức này dùng để cập nhật thông tin chăm sóc xe
+    public void updateXe(QuanLyChamSocXe x) {
+        int oldIndex = dongChon;
+        dsQly.remove(oldIndex);
+        dsQly.add(oldIndex, x);
+        showData(dsQly, tblModelQLX);
+        controllerQLX.writeToFile(dsQly, "ChamSocXe.txt");
+    }
+
+//    Phương thức này để kiểm tra mã ID trùng 
+    public boolean checkIdTrung(String maChamSoc) {
+        for (QuanLyChamSocXe xe : dsQly) {
+            if (xe.getMaChamSoc().equalsIgnoreCase(maChamSoc)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+//    Phương thức này dùng để đọc file và show dữ liệu từ file ra khi chạy lại chương trình
+    private void showQuanLyChamSocXe() {
+        dsQly = (ArrayList<QuanLyChamSocXe>) controllerQLX.readDataFromFile("ChamSocXe.txt");
+        if (dsQly == null) {
+            dsQly = new ArrayList<>();
+        }
+        this.showData(dsQly, tblModelQLX);
+    }
+
+    // ====================== QUAN LY DANGKY THUE XE=====================
+    public void addBLX(ThueXe x) {
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        dsDky.add(x);
+        file.writeToFile(dsDky, "thuexe.txt");
+        dsDkyBanDau = new ArrayList<>(dsDky);
+        this.showData(dsDky, tblModelBLX);
+    }
+
+    public void updateBLX(ThueXe x) {
+        dsDky.remove(dongChon);
+        this.addBLX(x);
+    }
+
+    private void showQuanLyBLX() {
+        dsDky = (ArrayList<ThueXe>) file.readDataFromFile("thuexe.txt");
+        if (dsDky == null) {
+            dsDky = new ArrayList<>();
+        }
+        this.showData(dsDky, tblModelBLX);
+    }
+
+    // QUAN LY XE CUA HANG
+    public void addXeStore(XeStore x) {
+        if (dsXe == null) {
+            dsXe = new ArrayList<>();
+        }
+        dsXe.add(x);
+        controllerXeStore.writeToFile(dsXe, "dsxe.txt");
+        dsXeBanDau = new ArrayList<>(dsXe);
+        this.showData(dsXe, modelXeStore);
+    }
+
+    public void updateXeStore(XeStore x) {
+        dsXe.remove(dongChon);
+        this.addXeStore(x);
+    }
+
+    private void showQuanLyXeStore() {
+        dsXe = (ArrayList<XeStore>) controllerXeStore.readDataFromFile("dsxe.txt");
+        if (dsXe == null) {
+            dsXe = new ArrayList<>();
+        }
+        this.showData(dsXe, modelXeStore);
+    }
+    
+    // QUAN LY HOA DON
+ public TreeSet<QuanLyHoaDon> getDsHD() {
+        return dsHD;
+    }
+
+    public void setDsHD(TreeSet<QuanLyHoaDon> dsHD) {
+        this.dsHD = dsHD;
+    }
+
+    // Phương thức này dùng để thêm hóa đơn vào danh sách và lưu vào file
+    public void addHoaDon(QuanLyHoaDon hd) {
+        dsHD.add(hd);
+        ds2 = new ArrayList<>(dsHD);
+        showData(ds2, modelHD);
+        controller.writeToFile(dsHD, "HoaDon.txt");
+    }
+
+    // Phương thức này dùng để hiển thị dữ liệu từ file khi khởi động chương trình
+    private void showHD() {
+        dsHD = (TreeSet<QuanLyHoaDon>) controller.readDataFromFile("HoaDon.txt");
+        if (dsHD == null) {
+            dsHD = new TreeSet<>();
+        }
+        if (!dsHD.isEmpty()) {
+            int sMaHD = dsHD.last().getMaHD();
+            QuanLyHoaDon.setSmaHD(sMaHD + 1);
+        }
+        ds2 = new ArrayList<>(dsHD);
+        this.showData(ds2, modelHD);
+    }
+
+    // Phương thức này dùng để tìm kiếm hóa đơn từ danh sách tạm thời
+    public QuanLyHoaDon searchObj() {
+        return ds2.get(dongChon);
+    }
+
+}
+
