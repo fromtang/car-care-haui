@@ -13,18 +13,21 @@ import model.Xe;
  * @author admin
  */
 public class XeStore implements Serializable{
-  private LocalDate ngayNhap;
-    private Xe car;
-    
     private String tenXe;
+    private LocalDate ngayNhap;
+    private double giaNhap;
+    private int soLuong;
+    private Xe car;
     public XeStore() {
     }
 
-    public XeStore( Xe car,String tenXe,  LocalDate ngayNhap ) {
+    public XeStore( Xe car,String tenXe,int soLuong,double giaNhap,LocalDate ngayNhap ) {
         try{ 
             this.car = car;
             this.tenXe = tenXe;
             this.ngayNhap = ngayNhap;
+            this.soLuong = soLuong;
+            this.giaNhap = giaNhap;
         }catch(Exception e){
             System.out.println("Dữ liệu truyền vào không hợp lệ !.Lỗi :" + e.toString());
         }
@@ -53,4 +56,21 @@ public class XeStore implements Serializable{
     public void setNgayNhap(LocalDate ngayNhap) {
         this.ngayNhap = ngayNhap;
     }  
+
+    public double getGiaNhap() {
+        return giaNhap;
+    }
+
+    public void setGiaNhap(double giaNhap) {
+        this.giaNhap = giaNhap;
+    }
+
+    public int getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
+    }
+    
 }

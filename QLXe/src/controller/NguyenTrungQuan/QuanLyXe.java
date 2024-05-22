@@ -27,6 +27,5 @@ public class QuanLyXe extends ControllerFile {
     public void sortByLoaiXe(ArrayList<XeStore> x){
         x.sort((XeStore o1, XeStore o2) -> o1.getCar().getLoaiXe().compareTo(o2.getCar().getLoaiXe()));
     }
-   
-   
+    
 }
