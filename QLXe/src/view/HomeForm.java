@@ -378,7 +378,6 @@ public class HomeForm extends javax.swing.JFrame implements View {
         buttonGroup4.add(sortByDate);
         sortByDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         sortByDate.setText("Ngày Thuê");
-        sortByDate.setActionCommand("Ngày Thuê");
         sortByDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sortByDateActionPerformed(evt);
@@ -591,8 +590,6 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
-        btThemHD.getAccessibleContext().setAccessibleName("Thêm mới");
-
         jTabbedPane1.addTab("Quản Lý Hoá Đơn", jPanel7);
 
         txtTimKiemXeCuaHang.setToolTipText("Nhập thông tin để tìm kiếm");
@@ -696,7 +693,8 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addContainerGap(260, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5))
+                .addComponent(jScrollPane5)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -757,7 +755,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1395, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
