@@ -169,7 +169,7 @@ public class ThemXeStore extends javax.swing.JDialog {
         LocalDate ngayNhap = null;
         boolean isOK = true;
         tenXe = txtTenXe.getText();
-       
+        
         loaiXe = cbxLoaiXe.getSelectedItem().toString();
         bienSo = txtBienSo.getText();
 

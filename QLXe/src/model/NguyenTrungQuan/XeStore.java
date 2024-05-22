@@ -15,7 +15,7 @@ import model.Xe;
 public class XeStore implements Serializable{
   private LocalDate ngayNhap;
     private Xe car;
-
+    
     private String tenXe;
     public XeStore() {
     }
