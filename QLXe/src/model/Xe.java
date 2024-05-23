@@ -17,7 +17,14 @@ public class Xe implements Serializable {
 
     public Xe() {
     }
-
+    public Xe(String loaiXe){
+        try {
+            setLoaiXe(loaiXe);
+        } catch (Exception e) {
+            System.out.println("Co loi du lieu Xe " + e.toString());
+        }
+        
+    }
     public Xe(String bienSoXe, String loaiXe, Nguoi chuSoHuu) {
         try {
             setBienSoXe(bienSoXe);

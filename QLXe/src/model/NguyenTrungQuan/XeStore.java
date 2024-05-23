@@ -72,5 +72,7 @@ public class XeStore implements Serializable{
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
-    
+    public double getThanhTien(){
+        return giaNhap*soLuong;
+    }
 }

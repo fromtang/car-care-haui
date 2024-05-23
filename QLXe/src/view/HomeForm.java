@@ -4,6 +4,7 @@ import controller.CaoDinhNhat.ControllerQuanLyChamSocXe;
 import controller.NguyenDinhTang.QLDangKyThueXe;
 import controller.NguyenTrungQuan.QuanLyXe;
 import controller.TrinhDucThang.ControllerQuanLyHoaDon;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -20,8 +21,8 @@ import view.HoaDon.SuaHoaDon;
 import view.HoaDon.ThemHoaDon;
 import view.HoaDon.XemChiTiet;
 
-import view.ThueXe.SuaXeStore;
-import view.ThueXe.ThemXeStore;
+import view.QuanLyXe.SuaXeStore;
+import view.QuanLyXe.ThemXeStore;
 
 import view.QuanLyChamSocXe.Sua;
 import view.QuanLyChamSocXe.ThemMoi;
@@ -50,11 +51,12 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private ControllerQuanLyHoaDon controller; // sử dụng lớp ControllerHD để điều khiển chức năng
     private ArrayList<QuanLyHoaDon> ds2; // danh sách để lưu trữ những thay đổi của danh sách hóa đơn
 
-//    DATA FOR QUANLYBAOHIEM
+//    DATA FOR QUANLYXE
     private ArrayList<XeStore> dsXe;
     private DefaultTableModel modelXeStore;
     private QuanLyXe controllerXeStore;
     private ArrayList<XeStore> dsXeBanDau;
+    private QuanLyXe dsxe;
 
     public HomeForm() {
         initComponents();
@@ -80,8 +82,9 @@ public class HomeForm extends javax.swing.JFrame implements View {
         if (dsXe == null) {
             dsXe = new ArrayList<>();
         }
+        dsxe = new QuanLyXe();
         controllerXeStore = new QuanLyXe();
-        dsXe = (ArrayList<XeStore>) file.readDataFromFile("dsxe.txt");
+        dsXe = (ArrayList<XeStore>) dsxe.readDataFromFile("dsxe.txt");
         modelXeStore = (DefaultTableModel) tblXeCuaHang.getModel();
         showQuanLyXeStore();
         
@@ -143,14 +146,15 @@ public class HomeForm extends javax.swing.JFrame implements View {
         txtTimKiemXeCuaHang = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         tblXeCuaHang = new javax.swing.JTable();
-        cbbSapXepBH = new javax.swing.JComboBox<>();
+        cbbSapXepXe = new javax.swing.JComboBox<>();
         btnThemBH = new javax.swing.JButton();
         btnSuaBH = new javax.swing.JButton();
         btnXoaBH = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        btnTimKiemBH = new javax.swing.JButton();
+        btnTimKiemXe = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        btnQLXeHoanTac = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -581,22 +585,22 @@ public class HomeForm extends javax.swing.JFrame implements View {
 
         tblXeCuaHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Tên Xe", "Biển số", "Loại xe", "Ngày Nhập"
+                "Tên Xe", "Loại xe", "Số Lượng", "Ngày Nhập", "Giá Nhập", "Thành Tiền"
             }
         ));
         jScrollPane5.setViewportView(tblXeCuaHang);
 
-        cbbSapXepBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbbSapXepBH.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loại Xe", "Ngày Nhập" }));
-        cbbSapXepBH.addActionListener(new java.awt.event.ActionListener() {
+        cbbSapXepXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbbSapXepXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loại Xe", "Ngày Nhập", "Giá Nhập" }));
+        cbbSapXepXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbbSapXepBHActionPerformed(evt);
+                cbbSapXepXeActionPerformed(evt);
             }
         });
 
@@ -628,23 +632,27 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("QUẢN LÝ XE");
 
-        btnTimKiemBH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnTimKiemBH.setText("Tìm kiếm");
-        btnTimKiemBH.addActionListener(new java.awt.event.ActionListener() {
+        btnTimKiemXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTimKiemXe.setText("Tìm kiếm");
+        btnTimKiemXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimKiemBHActionPerformed(evt);
+                btnTimKiemXeActionPerformed(evt);
             }
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Sắp xếp theo: ");
 
-        jButton5.setText("Hoàn tác");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnQLXeHoanTac.setText("Hoàn tác");
+        btnQLXeHoanTac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnQLXeHoanTacActionPerformed(evt);
             }
         });
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("Tên xe:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -652,14 +660,16 @@ public class HomeForm extends javax.swing.JFrame implements View {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTimKiemXeCuaHang, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTimKiemBH)
+                .addComponent(btnTimKiemXe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbbSapXepBH, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbbSapXepXe, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(224, 224, 224)
@@ -669,7 +679,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addGap(86, 86, 86)
                 .addComponent(btnXoaBH, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnQLXeHoanTac, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(263, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
@@ -684,9 +694,10 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiemXeCuaHang, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiemBH)
-                    .addComponent(cbbSapXepBH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(btnTimKiemXe)
+                    .addComponent(cbbSapXepXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
@@ -694,8 +705,8 @@ public class HomeForm extends javax.swing.JFrame implements View {
                     .addComponent(btnThemBH)
                     .addComponent(btnSuaBH)
                     .addComponent(btnXoaBH)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(btnQLXeHoanTac, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Quản Lý Xe", jPanel6);
@@ -878,16 +889,18 @@ public class HomeForm extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimKiemXeCuaHangActionPerformed
 
-    private void cbbSapXepBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbSapXepBHActionPerformed
+    private void cbbSapXepXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbSapXepXeActionPerformed
           int index = comboSapXep.getSelectedIndex();
-//        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa 
+//        Nếu chỉ số là 0 thì sắp theo loại xe.Còn 1 là ngày nhập
         if (index == 0) {
             controllerXeStore.sortByLoaiXe(dsXe);
         } else if (index == 1) {
             controllerXeStore.sortByNgayNhap(dsXe);
+        }else {
+            controllerXeStore.sortByGiaNhap(dsXe);
         }
         this.showData(dsXe, modelXeStore);
-    }//GEN-LAST:event_cbbSapXepBHActionPerformed
+    }//GEN-LAST:event_cbbSapXepXeActionPerformed
 
     private void btnThemBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemBHActionPerformed
         ThemXeStore themMoi = new ThemXeStore(this, rootPaneCheckingEnabled);
@@ -899,9 +912,9 @@ public class HomeForm extends javax.swing.JFrame implements View {
         dongChon = tblXeCuaHang.getSelectedRow();
 
         if (dsXe.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de sua !");
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để sửa !");
         } else if (dongChon == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hay chon dong chua thong tin can sua!");
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng để sửa!");
         } else {
             SuaXeStore suaXeStore = new SuaXeStore(this, rootPaneCheckingEnabled);
             suaXeStore.setEditData(dsXe.get(dongChon));
@@ -912,9 +925,9 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private void btnXoaBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaBHActionPerformed
          dongChon = tblXeCuaHang.getSelectedRow();
         if (dongChon == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hay chon mot dong can xoa!");
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng cần xoá!");
         } else if (dsXe.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de xoa!");
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xoá!");
         } else {
             int confirm = JOptionPane.showConfirmDialog(
                     rootPane,
@@ -930,7 +943,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         }
     }//GEN-LAST:event_btnXoaBHActionPerformed
 
-    private void btnTimKiemBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemBHActionPerformed
+    private void btnTimKiemXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemXeActionPerformed
              String tenxeTimKiem = txtTimKiemXeCuaHang.getText();
         if (tenxeTimKiem.length() > 0) {
             ArrayList<XeStore> list = new ArrayList<>();
@@ -942,14 +955,14 @@ public class HomeForm extends javax.swing.JFrame implements View {
             dsXe.clear();
             dsXe.addAll(list);
             if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Khong tim thay!");
+                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy!");
             } else {
                 this.showData(list, modelXeStore);
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Vui long nhap thong tin!");
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập thông tin!");
         }
-    }//GEN-LAST:event_btnTimKiemBHActionPerformed
+    }//GEN-LAST:event_btnTimKiemXeActionPerformed
 
     private void btnThemBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemBL
         ThemThueXe them = new ThemThueXe(this, rootPaneCheckingEnabled);
@@ -959,9 +972,9 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private void btnSuaBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaBL
         dongChon = tblThueXe.getSelectedRow();
         if (dsThueXe.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de sua!");
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để sửa!");
         } else if (dongChon == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hay chon dong chua thong tin can sua!");
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn dòng chứa thông tin cần sửa!");
         } else {
             SuaThueXe suaBlx = new SuaThueXe(this, rootPaneCheckingEnabled);
             suaBlx.setEditData(dsThueXe.get(dongChon));
@@ -972,9 +985,9 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private void btnXoaBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaBL
         dongChon = tblThueXe.getSelectedRow();
         if (dongChon == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hay chon mot dong can xoa!");
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng cần xoá!");
         } else if (dsThueXe.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Khong co thong tin de xoa!");
+            JOptionPane.showMessageDialog(rootPane, "Không có thông tin để xoá!");
         } else {
             int confirm = JOptionPane.showConfirmDialog(
                     rootPane,
@@ -1011,12 +1024,12 @@ public class HomeForm extends javax.swing.JFrame implements View {
             dsThueXe.clear();
             dsThueXe.addAll(list);
             if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Khong tim thay!");
+                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy ");
             } else {
                 this.showData(list, tblModelThueXe);
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Vui long nhap thong tin!");
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập thông tin");
         }
     }//GEN-LAST:event_btnTimActionPerformed
 
@@ -1028,9 +1041,10 @@ public class HomeForm extends javax.swing.JFrame implements View {
 
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnQLXeHoanTacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLXeHoanTacActionPerformed
+        txtTimKiemXeCuaHang.setText("");
+        showQuanLyXeStore();
+    }//GEN-LAST:event_btnQLXeHoanTacActionPerformed
 
     private void cbbsortThueXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbsortThueXeActionPerformed
         int index = cbbsortThueXe.getSelectedIndex();
@@ -1085,6 +1099,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private javax.swing.JButton btThemHD;
     private javax.swing.JButton btXemChiTietHD;
     private javax.swing.JButton btXoaHD;
+    private javax.swing.JButton btnQLXeHoanTac;
     private javax.swing.JButton btnQuayLai;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSua;
@@ -1093,7 +1108,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private javax.swing.JButton btnThemMoi;
     private javax.swing.JButton btnTim;
     private javax.swing.JButton btnTimKiem;
-    private javax.swing.JButton btnTimKiemBH;
+    private javax.swing.JButton btnTimKiemXe;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaBH;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -1101,17 +1116,17 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.JComboBox<String> cbbSapXepBH;
+    private javax.swing.JComboBox<String> cbbSapXepXe;
     private javax.swing.JComboBox<String> cbbsortThueXe;
     private javax.swing.JComboBox<String> comboSapXep;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1163,12 +1178,15 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 });
             }
             if (t instanceof XeStore) {
-                XeStore bh = (XeStore) t;
+                XeStore xe = (XeStore) t;
                 model.addRow(new Object[]{
-                    bh.getTenXe(),
-                    bh.getCar().getBienSoXe(),
-                    bh.getCar().getLoaiXe(),
-                    bh.getNgayNhap(),});
+                    xe.getTenXe(),
+                    xe.getCar().getLoaiXe(),
+                    xe.getSoLuong(),
+                    xe.getNgayNhap(),
+                    xe.getGiaNhap(),
+                    xe.getGiaNhap()*xe.getSoLuong()
+                });
             }
             if (t instanceof QuanLyHoaDon hd) {
                 model.addRow(new Object[]{
