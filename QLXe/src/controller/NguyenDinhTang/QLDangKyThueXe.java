@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import model.NguyenDinhTang.ThueXe;
 /**
  *
- * @author Admin
+ * @author tangnd
  */
 public class QLDangKyThueXe extends ControllerFile{
     public void sortByHoTen(ArrayList<ThueXe> x){
