@@ -53,7 +53,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
 
 //    DATA FOR QUANLYXE
     private ArrayList<XeStore> dsXe;
-    private DefaultTableModel modelXeStore;
+    private DefaultTableModel tblModelXeCuaHang;
     private QuanLyXe controllerXeStore;
     private ArrayList<XeStore> dsXeBanDau;
     private QuanLyXe dsxe;
@@ -85,7 +85,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         dsxe = new QuanLyXe();
         controllerXeStore = new QuanLyXe();
         dsXe = (ArrayList<XeStore>) dsxe.readDataFromFile("dsxe.txt");
-        modelXeStore = (DefaultTableModel) tblXeCuaHang.getModel();
+        tblModelXeCuaHang = (DefaultTableModel) tblXeCuaHang.getModel();
         showQuanLyXeStore();
         
         // SHOW QUAN LY HOA DON
@@ -362,7 +362,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Sắp xếp theo: ");
 
-        cbbsortThueXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Họ tên", "Ngày thuê" }));
+        cbbsortThueXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Họ tên", "Ngày thuê tăng dần" }));
         cbbsortThueXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbsortThueXeActionPerformed(evt);
@@ -592,7 +592,8 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jScrollPane5.setViewportView(tblXeCuaHang);
 
         cbbSapXepXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbbSapXepXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loại Xe", "Ngày Nhập", "Giá Nhập" }));
+
+        cbbSapXepXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Loại Xe", "Ngày Nhập", "Giá Nhập Từ Bé Đến Lớn", "Giá Nhập Từ Lớn Đến Bế" }));
         cbbSapXepXe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbSapXepXeActionPerformed(evt);
@@ -886,16 +887,18 @@ public class HomeForm extends javax.swing.JFrame implements View {
     }//GEN-LAST:event_txtTimKiemXeCuaHangActionPerformed
 
     private void cbbSapXepXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbSapXepXeActionPerformed
-          int index = comboSapXep.getSelectedIndex();
-//        Nếu chỉ số là 0 thì sắp theo loại xe.Còn 1 là ngày nhập
+         int index = cbbSapXepXe.getSelectedIndex();
+//        Nếu chỉ số là 0 thì sắp theo thành tiền còn chỉ số là 1 thì sắp theo ngày sửa 
         if (index == 0) {
             controllerXeStore.sortByLoaiXe(dsXe);
         } else if (index == 1) {
             controllerXeStore.sortByNgayNhap(dsXe);
-        }else {
-            controllerXeStore.sortByGiaNhap(dsXe);
+        }else if (index == 2){
+            controllerXeStore.sortByGiaNhapMore(dsXe);
+        }else{
+            controllerXeStore.sortByGiaNhapLess(dsXe);
         }
-        this.showData(dsXe, modelXeStore);
+        this.showData(dsXe, tblModelXeCuaHang);
     }//GEN-LAST:event_cbbSapXepXeActionPerformed
 
     private void btnThemBHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemBHActionPerformed
@@ -934,7 +937,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
             if (confirm == JOptionPane.YES_OPTION) {
                 dsXe.remove(dongChon);
                  controllerXeStore.writeToFile(dsXe, "dsxe.txt");
-                this.showData(dsXe, modelXeStore);
+                this.showData(dsXe, tblModelXeCuaHang);
             }
         }
     }//GEN-LAST:event_btnXoaBHActionPerformed
@@ -953,7 +956,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
             if (list.isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Không tìm thấy!");
             } else {
-                this.showData(list, modelXeStore);
+                this.showData(list, tblModelXeCuaHang);
             }
         } else {
             JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập thông tin!");
@@ -1263,7 +1266,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         dsXe.add(x);
         controllerXeStore.writeToFile(dsXe, "dsxe.txt");
         dsXeBanDau = new ArrayList<>(dsXe);
-        this.showData(dsXe, modelXeStore);
+        this.showData(dsXe, tblModelXeCuaHang);
     }
 
     public void updateXeStore(XeStore x) {
@@ -1276,7 +1279,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         if (dsXe == null || dsXe.isEmpty()) {
             dsXe = new ArrayList<>();
         }
-        this.showData(dsXe, modelXeStore);
+        this.showData(dsXe, tblModelXeCuaHang);
     }
     
     // QUAN LY HOA DON

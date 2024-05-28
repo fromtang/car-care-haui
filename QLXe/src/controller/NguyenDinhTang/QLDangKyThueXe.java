@@ -13,7 +13,7 @@ import model.NguyenDinhTang.ThueXe;
  */
 public class QLDangKyThueXe extends ControllerFile{
     public void sortByHoTen(ArrayList<ThueXe> x){
-        x.sort((ThueXe o1, ThueXe o2) -> o1.getHoTen().compareTo(o2.getHoTen()));
+        x.sort((ThueXe o1, ThueXe o2) -> o1.getHoTen().toLowerCase().compareTo(o2.getHoTen().toLowerCase()));
     }
     
     public void sortByNgayDky(ArrayList<ThueXe> x){
