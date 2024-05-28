@@ -79,7 +79,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         controllerQLThueXe = new QLDangKyThueXe();
         showQuanLyThueXe();
         // SHOW QUAN LY XE STORE
-        if (dsXe == null) {
+        if (dsXe == null || dsXe.isEmpty()) {
             dsXe = new ArrayList<>();
         }
         dsxe = new QuanLyXe();
@@ -126,12 +126,12 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jButton2 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        txtTimKiemThueXe = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         btnTim = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         cbbsortThueXe = new javax.swing.JComboBox<>();
+        txtTimKiemThueXe = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblQLHD = new javax.swing.JTable();
@@ -343,17 +343,6 @@ public class HomeForm extends javax.swing.JFrame implements View {
             }
         });
 
-        txtTimKiemThueXe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtTimKiemThueXe.setToolTipText("");
-        txtTimKiemThueXe.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtTimKiemThueXe.setPreferredSize(new java.awt.Dimension(64, 22));
-        txtTimKiemThueXe.setRequestFocusEnabled(false);
-        txtTimKiemThueXe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTimKiemThueXeActionPerformed(evt);
-            }
-        });
-
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton4.setText("Hoàn tác");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -398,6 +387,12 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addComponent(cbbsortThueXe, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        txtTimKiemThueXe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimKiemThueXeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -439,9 +434,9 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtTimKiemThueXe, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnTim, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimKiemThueXe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
@@ -692,12 +687,13 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiemXeCuaHang, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiemXe)
-                    .addComponent(cbbSapXepXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtTimKiemXeCuaHang, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTimKiemXe)
+                        .addComponent(cbbSapXepXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)))
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
@@ -952,8 +948,8 @@ public class HomeForm extends javax.swing.JFrame implements View {
                     list.add(x);
                 }
             }
-            dsXe.clear();
-            dsXe.addAll(list);
+//            dsXe.clear();
+//            dsXe.addAll(list);
             if (list.isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Không tìm thấy!");
             } else {
@@ -1003,10 +999,6 @@ public class HomeForm extends javax.swing.JFrame implements View {
         }
     }//GEN-LAST:event_btnXoaBL
 
-    private void txtTimKiemThueXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemThueXeActionPerformed
-
-    }//GEN-LAST:event_txtTimKiemThueXeActionPerformed
-
     private void btnHoanTacBL(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoanTacBL
         showQuanLyThueXe();
     }//GEN-LAST:event_btnHoanTacBL
@@ -1021,8 +1013,8 @@ public class HomeForm extends javax.swing.JFrame implements View {
                     list.add(x);
                 }
             }
-            dsThueXe.clear();
-            dsThueXe.addAll(list);
+//            dsThueXe.clear();
+//            dsThueXe.addAll(list);
             if (list.isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Không tìm thấy ");
             } else {
@@ -1056,6 +1048,10 @@ public class HomeForm extends javax.swing.JFrame implements View {
         }
         this.showData(dsThueXe, tblModelThueXe);
     }//GEN-LAST:event_cbbsortThueXeActionPerformed
+
+    private void txtTimKiemThueXeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemThueXeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTimKiemThueXeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1228,7 +1224,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
 //    Phương thức này dùng để đọc file và show dữ liệu từ file ra khi chạy lại chương trình
     private void showQuanLyChamSocXe() {
         dsQly = (ArrayList<QuanLyChamSocXe>) controllerQLX.readDataFromFile("ChamSocXe.txt");
-        if (dsQly == null) {
+        if (dsQly == null || dsQly.isEmpty()) {
             dsQly = new ArrayList<>();
         }
         this.showData(dsQly, tblModelQLX);
@@ -1253,7 +1249,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
 
     private void showQuanLyThueXe() {
         dsThueXe = (ArrayList<ThueXe>) file.readDataFromFile("thuexe.txt");
-        if (dsThueXe == null) {
+        if (dsThueXe == null || dsThueXe.isEmpty()) {
             dsThueXe = new ArrayList<>();
         }
         this.showData(dsThueXe, tblModelThueXe);
@@ -1277,7 +1273,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
 
     private void showQuanLyXeStore() {
         dsXe = (ArrayList<XeStore>) controllerXeStore.readDataFromFile("dsxe.txt");
-        if (dsXe == null) {
+        if (dsXe == null || dsXe.isEmpty()) {
             dsXe = new ArrayList<>();
         }
         this.showData(dsXe, modelXeStore);
@@ -1303,7 +1299,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
     // Phương thức này dùng để hiển thị dữ liệu từ file khi khởi động chương trình
     private void showHD() {
         dsHD = (TreeSet<QuanLyHoaDon>) controller.readDataFromFile("HoaDon.txt");
-        if (dsHD == null) {
+        if (dsHD == null || dsHD.isEmpty()) {
             dsHD = new TreeSet<>();
         }
         if (!dsHD.isEmpty()) {
