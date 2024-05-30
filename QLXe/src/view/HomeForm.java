@@ -142,6 +142,8 @@ public class HomeForm extends javax.swing.JFrame implements View {
         btXoaHD = new javax.swing.JButton();
         btXemChiTietHD = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        cbSapXepHoaDon = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
         txtTimKiemXeCuaHang = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -246,7 +248,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(180, Short.MAX_VALUE)
                 .addComponent(btnThemMoi, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86)
                 .addComponent(btnSua, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -398,7 +400,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(180, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,7 +478,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1216, Short.MAX_VALUE)
+            .addGap(0, 1172, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -523,6 +525,17 @@ public class HomeForm extends javax.swing.JFrame implements View {
             }
         });
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setText("Sắp xếp theo:");
+
+        cbSapXepHoaDon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbSapXepHoaDon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tổng Thanh Toán", "Thời Gian" }));
+        cbSapXepHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSapXepHoaDonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -549,13 +562,24 @@ public class HomeForm extends javax.swing.JFrame implements View {
                         .addContainerGap()
                         .addComponent(jScrollPane3)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(cbSapXepHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(568, 568, 568)
+                    .addComponent(jLabel13)
+                    .addContainerGap(524, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(18, 18, 18)
+                .addComponent(cbSapXepHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -567,6 +591,11 @@ public class HomeForm extends javax.swing.JFrame implements View {
                     .addComponent(btXemChiTietHD)
                     .addComponent(btnReset))
                 .addContainerGap(101, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(278, 278, 278)
+                    .addComponent(jLabel13)
+                    .addContainerGap(279, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Quản Lý Hoá Đơn", jPanel7);
@@ -676,7 +705,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
                 .addComponent(btnXoaBH, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83)
                 .addComponent(btnQLXeHoanTac, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(263, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane5)
@@ -1056,6 +1085,19 @@ public class HomeForm extends javax.swing.JFrame implements View {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTimKiemThueXeActionPerformed
 
+    private void cbSapXepHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSapXepHoaDonActionPerformed
+        // TODO add your handling code here:
+         int index = cbSapXepHoaDon.getSelectedIndex();
+         ds2 = new ArrayList<>(dsHD);
+        this.showData(ds2, modelHD);
+         if (index == 0) {
+            ds2 = controller.sortByTien(dsHD);
+        } else if (index == 1) {
+           ds2=  controller.sortByTime(dsHD);
+        }
+        this.showData(ds2, modelHD);
+    }//GEN-LAST:event_cbSapXepHoaDonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1115,6 +1157,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.ButtonGroup buttonGroup5;
+    private javax.swing.JComboBox<String> cbSapXepHoaDon;
     private javax.swing.JComboBox<String> cbbSapXepXe;
     private javax.swing.JComboBox<String> cbbsortThueXe;
     private javax.swing.JComboBox<String> comboSapXep;
@@ -1126,6 +1169,7 @@ public class HomeForm extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

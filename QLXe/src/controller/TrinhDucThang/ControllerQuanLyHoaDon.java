@@ -35,28 +35,28 @@ public class ControllerQuanLyHoaDon extends ControllerFile {
 //        return ds2;
 //    }
 //
-//    public ArrayList sortByTien(TreeSet ds) {
-//        ArrayList<QuanLyHoaDon> ds2 = new ArrayList<>(ds);
-//        ds2.sort(new Comparator<QuanLyHoaDon>() {
-//            @Override
-//            public int compare(QuanLyHoaDon o1, QuanLyHoaDon o2) {
-//                return Double.compare(o1.tongTien(), o2.tongTien());
-//            }
-//        });
-//        return ds2;
-//    }
-//    
-//    public ArrayList sortByTime(TreeSet ds) {
-//        ArrayList<QuanLyHoaDon> ds2 = new ArrayList<>(ds);
-//        ds2.sort(new Comparator<QuanLyHoaDon>() {
-//            @Override
-//            public int compare(QuanLyHoaDon o1, QuanLyHoaDon o2) {
-//                LocalDate date1 = o1.getThoiGian();
-//                LocalDate date2 = o2.getThoiGian();
-//                return date2.compareTo(date1);
-//            }
-//        });
-//        return ds2;
-//    }
+    public ArrayList sortByTien(TreeSet ds) {
+        ArrayList<QuanLyHoaDon> ds2 = new ArrayList<>(ds);
+        ds2.sort(new Comparator<QuanLyHoaDon>() {
+            @Override
+            public int compare(QuanLyHoaDon o1, QuanLyHoaDon o2) {
+                return Double.compare(o1.tongTien(), o2.tongTien());
+            }
+        });
+        return ds2;
+    }
+    
+    public ArrayList sortByTime(TreeSet ds) {
+        ArrayList<QuanLyHoaDon> ds2 = new ArrayList<>(ds);
+        ds2.sort(new Comparator<QuanLyHoaDon>() {
+            @Override
+            public int compare(QuanLyHoaDon o1, QuanLyHoaDon o2) {
+                LocalDate date1 = o1.getThoiGian();
+                LocalDate date2 = o2.getThoiGian();
+                return date2.compareTo(date1);
+            }
+        });
+        return ds2;
+    }
 }
 
