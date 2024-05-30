@@ -216,7 +216,7 @@ public class ThemThueXe extends javax.swing.JDialog {
         }
         if (isOK) {
             ThueXe qly = new ThueXe(hoTen, diaChi, sdt, ngayThue, loaiXe, bienSo);
-            main.addBLX(qly);
+            main.addThueXe(qly);
             JOptionPane.showMessageDialog(rootPane, "Them thanh cong");
 
         }

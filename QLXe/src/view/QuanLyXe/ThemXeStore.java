@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package view.NguyenTrungQuan;
+package view.QuanLyXe;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import model.NguyenTrungQuan.XeStore;
@@ -47,16 +49,20 @@ public class ThemXeStore extends javax.swing.JDialog {
         cbxLoaiXe = new javax.swing.JComboBox<>();
         txtTenXe = new javax.swing.JTextField();
         txtNgayNhap = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        txtBienSo = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtSoLuongXe = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtGiaNhap = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setText("NHẬP THÔNG TIN Xe");
+        jLabel2.setText("NHẬP THÔNG TIN XE");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Tên Xe");
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Ngày Nhập");
 
         btnThem.setText("Thêm");
@@ -73,6 +79,7 @@ public class ThemXeStore extends javax.swing.JDialog {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Loại Xe");
 
         cbxLoaiXe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Xe Số", "Xe Tay Ga", "Phân Khối Lớn" }));
@@ -94,44 +101,43 @@ public class ThemXeStore extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setText("Biển Số Xe");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Số Lượng");
 
-        txtBienSo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBienSoActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Giá Nhập");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtTenXe)
-                                    .addComponent(txtNgayNhap)
-                                    .addComponent(txtBienSo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(btnThem)
-                        .addGap(84, 84, 84)
-                        .addComponent(btnHuy)))
-                .addContainerGap(104, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtTenXe)
+                            .addComponent(cbxLoaiXe, 0, 243, Short.MAX_VALUE)
+                            .addComponent(txtSoLuongXe)
+                            .addComponent(txtNgayNhap)
+                            .addComponent(txtGiaNhap))))
+                .addContainerGap(86, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,51 +146,87 @@ public class ThemXeStore extends javax.swing.JDialog {
                 .addComponent(jLabel2)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtTenXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBienSo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThem)
-                    .addComponent(btnHuy))
-                .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTenXe, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxLoaiXe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSoLuongXe, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNgayNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtGiaNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        String tenXe, loaiXe, bienSo;
+        String tenXe = null, loaiXe = null;
+        int soLuong = 0;
+        double giaNhap = 0;
         LocalDate ngayNhap = null;
         boolean isOK = true;
-        tenXe = txtTenXe.getText();
-       
-        loaiXe = cbxLoaiXe.getSelectedItem().toString();
-        bienSo = txtBienSo.getText();
-
+        
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            ngayNhap = LocalDate.parse(txtNgayNhap.getText(), formatter);
+            if (txtTenXe.getText() == null || cbxLoaiXe.getSelectedItem() == null || txtSoLuongXe.getText() == null || txtGiaNhap.getText() == null) {
+                isOK = false;
+                throw new IllegalArgumentException("Vui lòng nhập đầy đủ thông tin");
+            } else {
+                tenXe = txtTenXe.getText();
+                loaiXe = cbxLoaiXe.getSelectedItem().toString();
+                giaNhap = Double.parseDouble(txtGiaNhap.getText());
+
+                try {
+                    soLuong = Integer.parseInt(txtSoLuongXe.getText());
+                    if (soLuong <= 0) {
+                        throw new IllegalArgumentException("Số lượng phải luôn dương");
+                    }
+                    if (giaNhap < 0) {
+                        throw new IllegalArgumentException("Giá nhập phải lớn hơn hoặc bằng 0");
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, e.getMessage());
+                    isOK = false;
+                }
+
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    ngayNhap = LocalDate.parse(txtNgayNhap.getText(), formatter);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(rootPane, "Ngày nhập không đúng định dạng!");
+                    isOK = false;
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập đủ thông tin");
+            isOK = false;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Ngay khong hop le!");
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
             isOK = false;
         }
+        
         if (isOK) {
-            Xe x = new Xe(bienSo, loaiXe);
-            XeStore xestote = new XeStore(x, tenXe, ngayNhap);
+            Xe x = new Xe(loaiXe);
+            XeStore xestote = new XeStore(x,tenXe,soLuong,giaNhap,ngayNhap);
             main.addXeStore(xestote);
-            JOptionPane.showMessageDialog(rootPane, "Them thanh cong");
+            JOptionPane.showMessageDialog(rootPane, "Thêm thành công");
 
         }
     }//GEN-LAST:event_btnThemActionPerformed
@@ -204,10 +246,6 @@ public class ThemXeStore extends javax.swing.JDialog {
     private void txtNgayNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayNhapActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNgayNhapActionPerformed
-
-    private void txtBienSoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBienSoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBienSoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,13 +308,15 @@ public class ThemXeStore extends javax.swing.JDialog {
     private javax.swing.JButton btnHuy;
     private javax.swing.JButton btnThem;
     private javax.swing.JComboBox<String> cbxLoaiXe;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtBienSo;
+    private javax.swing.JTextField txtGiaNhap;
     private javax.swing.JTextField txtNgayNhap;
+    private javax.swing.JTextField txtSoLuongXe;
     private javax.swing.JTextField txtTenXe;
     // End of variables declaration//GEN-END:variables
 }

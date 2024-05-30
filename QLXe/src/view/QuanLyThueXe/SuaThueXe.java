@@ -242,7 +242,7 @@ public class SuaThueXe extends javax.swing.JDialog {
 
         if (isOK) {
             ThueXe qlyblx = new ThueXe(hoTen, diaChi, sdt, ngayThue, loaiXe, bienSo);
-            home.updateBLX(qlyblx);
+            home.updateThueXe(qlyblx);
             JOptionPane.showMessageDialog(rootPane, "Cap nhat thanh cong");
             this.dispose();
         }

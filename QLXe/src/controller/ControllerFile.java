@@ -4,12 +4,17 @@
  */
 package controller;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  *
@@ -22,10 +27,14 @@ public class ControllerFile implements Controller{
         File file = new File(fileName);
         try {
             file.createNewFile();
-            try (FileOutputStream fos = new FileOutputStream(file); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            try (FileOutputStream fos = new FileOutputStream(file);
+                 OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+                 BufferedOutputStream bos = new BufferedOutputStream(fos);
+                 ObjectOutputStream oos = new ObjectOutputStream(bos)) {
                 oos.writeObject(obj);
             }
         } catch (IOException ex) {
+            // Xử lý lỗi
         }
     }
     
