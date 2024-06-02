@@ -99,7 +99,7 @@ Phần mềm Quản lý Xe là một ứng dụng được phát triển bằng 
 ## Thông tin liên hệ
 
 Nếu bạn có bất kỳ câu hỏi hoặc gặp vấn đề gì trong quá trình sử dụng phần mềm, vui lòng liên hệ với chúng tôi qua:
-- **Email:** support@quanlyxe.com
-- **Điện thoại:** +84 123 456 789
+- **Email:** 
+- **Điện thoại:**
 
 Chúc bạn sử dụng phần mềm hiệu quả!
